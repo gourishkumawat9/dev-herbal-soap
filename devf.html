@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEV Herbal Soap — Crafted by Hand, Powered by Nature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #3a5068;
+  --navy-dark: #263646;
+  --navy-mid:  #4d6b84;
+  --cream:     #f5f0e8;
+  --ivory:     #faf7f2;
+  --parchment: #f0ead8;
+  --gold:      #b8975a;
+  --gold-lt:   #d4b078;
+  --gold-dk:   #9a7a42;
+  --stone:     #c4bab0;
+  --brown:     #8a7560;
+  --text:      #2c3a44;
+  --text-mid:  #4a5a66;
+  --text-lt:   #7a8e99;
+  --border:    rgba(184,151,90,0.2);
+  --sh-sm:     0 4px 20px rgba(44,58,68,0.07);
+  --sh-md:     0 10px 48px rgba(44,58,68,0.11);
+  --sh-lg:     0 24px 80px rgba(44,58,68,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Jost',sans-serif;background:var(--ivory);color:var(--text);overflow-x:hidden;line-height:1.7}
+img{display:block;max-width:100%;height:auto}
+
+/* ─── UTILITIES ─── */
+.lbl{display:inline-block;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:400}
+.lbl-row{display:flex;align-items:center;gap:1rem;justify-content:center}
+.lbl-row::before,.lbl-row::after{content:'';display:block;width:40px;height:1px;background:var(--gold)}
+.heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:600;color:var(--navy-dark);line-height:1.15}
+.body-text{font-size:.93rem;color:var(--text-mid);font-weight:300;line-height:1.9}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2.4rem;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .3s;font-weight:400;border-radius:1px}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-mid);transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold-dk);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn-wa{background:#25d366;color:#fff}.btn-wa:hover{background:#1eba58;transform:translateY(-2px)}
+.rule{width:56px;height:1px;background:linear-gradient(90deg,var(--gold-lt),var(--gold))}
+
+/* ─── REVEAL ─── */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease}
+.rv.in{opacity:1;transform:none}
+.rl{opacity:0;transform:translateX(-30px);transition:opacity .75s ease,transform .75s ease}
+.rl.in{opacity:1;transform:none}
+.rr{opacity:0;transform:translateX(30px);transition:opacity .75s ease,transform .75s ease}
+.rr.in{opacity:1;transform:none}
+
+/* ─── NAV ─── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;transition:background .4s,box-shadow .4s}
+#nav.scrolled{background:rgba(250,247,242,.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border),var(--sh-sm)}
+.nav-logo{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.nav-logo-img{width:44px;height:44px;object-fit:contain;border-radius:50%}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;line-height:1.1}
+.nav-brand sub{display:block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:300;color:var(--gold);font-style:normal}
+#nav:not(.scrolled) .nav-brand{color:#fff}
+#nav.scrolled .nav-brand{color:var(--navy-dark)}
+nav ul{list-style:none;display:flex;gap:2.4rem;align-items:center}
+nav a{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;font-weight:400;transition:color .25s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s}
+nav a:hover::after{transform:scaleX(1)}
+#nav:not(.scrolled) nav a{color:rgba(255,255,255,.75)}
+#nav:not(.scrolled) nav a:hover{color:#fff}
+#nav.scrolled nav a{color:var(--text-mid)}
+#nav.scrolled nav a:hover{color:var(--navy)}
+.nav-wa{display:flex;align-items:center;gap:.4rem;background:#25d366;color:#fff;padding:.5rem 1.2rem;border-radius:1px;text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:background .25s}
+.nav-wa:hover{background:#1eba58}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.burger span{display:block;width:24px;height:1.5px;background:#fff;transition:all .3s}
+#nav.scrolled .burger span{background:var(--navy)}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+#mob{display:none;position:fixed;top:72px;left:0;right:0;z-index:999;background:var(--ivory);border-bottom:1px solid var(--border);flex-direction:column;box-shadow:var(--sh-md)}
+#mob.open{display:flex}
+.mob-a{padding:1rem 2rem;border-bottom:1px solid var(--border);text-decoration:none;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid);font-weight:300}
+
+/* ─── HERO ─── */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-img{position:relative;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.05);transition:transform 8s ease}
+#hero:hover .hero-img img{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(140deg,rgba(38,54,70,.5),rgba(38,54,70,.1))}
+.hero-copy{background:var(--navy-dark);display:flex;flex-direction:column;justify-content:center;padding:6rem 5rem 5rem;position:relative;overflow:hidden}
+.hero-copy::before{content:'';position:absolute;width:360px;height:360px;border-radius:50%;border:1px solid rgba(184,151,90,.12);bottom:-100px;right:-100px;pointer-events:none}
+.hero-copy::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(184,151,90,.08);top:60px;left:-50px;pointer-events:none}
+.hero-eye{display:flex;align-items:center;gap:.8rem;margin-bottom:1.6rem}
+.hero-eye::before{content:'';width:36px;height:1px;background:var(--gold-lt)}
+.hero-eye-txt{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-lt);font-weight:300}
+.hero-h1{font-family:'Cormorant Garamond',serif;color:#fff;font-weight:300;line-height:1.05;margin-bottom:.3rem}
+.hero-h1-main{font-size:clamp(3rem,5vw,4.8rem);display:block}
+.hero-h1-brand{font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:600;color:var(--gold-lt);font-style:italic;display:block;letter-spacing:.04em}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.5);margin:1.2rem 0 .6rem}
+.hero-rule{width:56px;height:1px;background:linear-gradient(90deg,var(--gold-lt),transparent);margin-bottom:1.4rem}
+.hero-desc{font-size:.88rem;color:rgba(255,255,255,.5);font-weight:300;line-height:1.85;max-width:360px;margin-bottom:2.4rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stamp{position:absolute;bottom:2.5rem;right:2.5rem;text-align:center}
+.hero-stamp-c{width:88px;height:88px;border-radius:50%;border:1px solid rgba(184,151,90,.3);display:flex;align-items:center;justify-content:center}
+.hero-stamp-i{width:72px;height:72px;border-radius:50%;background:rgba(184,151,90,.1);border:1px solid rgba(184,151,90,.2);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero-stamp-n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gold-lt);line-height:1}
+.hero-stamp-l{font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);line-height:1.3;text-align:center}
+
+/* ─── MARQUEE ─── */
+.mq{background:var(--gold);padding:.8rem 0;overflow:hidden}
+.mq-track{display:flex;white-space:nowrap;animation:mq 24s linear infinite}
+.mq-item{display:inline-flex;align-items:center;gap:1.4rem;padding:0 2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:400}
+.mq-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.5)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── SECTION BASE ─── */
+.sec{padding:8rem 2rem}
+.wrap{max-width:1200px;margin:0 auto}
+.sec-hd{text-align:center;margin-bottom:5rem}
+.sec-hd .lbl-row{margin-bottom:.8rem}
+.sec-hd .heading{margin-bottom:.8rem}
+
+/* ─── ABOUT ─── */
+#about{background:var(--cream)}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center}
+.about-cluster{position:relative;padding-bottom:3.5rem;padding-right:3.5rem}
+.about-main{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;box-shadow:var(--sh-md)}
+.about-accent{position:absolute;bottom:0;right:0;width:55%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;box-shadow:var(--sh-lg);border:5px solid var(--cream)}
+.about-badge{position:absolute;top:2rem;left:-2rem;background:var(--navy-dark);color:#fff;padding:1.4rem 1.2rem;border-radius:2px;box-shadow:var(--sh-md);z-index:2;text-align:center}
+.ab-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--gold-lt);display:block;line-height:1}
+.ab-lbl{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-top:.2rem}
+.about-txt .lbl{margin-bottom:.5rem}
+.about-txt .heading{margin-bottom:1.2rem}
+.pull{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-style:italic;color:var(--navy);border-left:2px solid var(--gold);padding-left:1.4rem;margin:1.8rem 0;line-height:1.6}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.pill{display:flex;align-items:flex-start;gap:.8rem}
+.pill-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:.5rem;flex-shrink:0}
+.pill-txt strong{display:block;font-size:.82rem;font-weight:500;color:var(--navy-dark)}
+.pill-txt span{font-size:.78rem;color:var(--text-lt);font-weight:300}
+
+/* ─── SHOWCASE ─── */
+#showcase{background:var(--navy-dark);padding:0}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr 1fr}
+.sc-col{display:flex;flex-direction:column}
+.sc-img{overflow:hidden;position:relative}
+.sc-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;display:block}
+.sc-img:hover img{transform:scale(1.06)}
+.sc-img-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(38,54,70,.6) 100%);opacity:0;transition:opacity .4s}
+.sc-img:hover .sc-img-ov{opacity:1}
+.sc-img.tall{aspect-ratio:3/4}
+.sc-img.sq{aspect-ratio:1}
+.sc-img.wd{aspect-ratio:4/3}
+.sc-txt{background:var(--navy-dark);display:flex;flex-direction:column;justify-content:center;padding:3.5rem;position:relative;overflow:hidden}
+.sc-txt::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 100%,rgba(184,151,90,.08) 0%,transparent 60%)}
+.sc-txt .lbl{color:var(--gold-lt);margin-bottom:.6rem}
+.sc-txt .heading{color:#fff;font-size:clamp(1.6rem,2.5vw,2.2rem);margin-bottom:.8rem}
+.sc-txt .body-text{color:rgba(255,255,255,.45)}
+.sc-gold{background:var(--gold);display:flex;align-items:center;justify-content:center;padding:3rem;aspect-ratio:1}
+.sc-gold-q{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#fff;text-align:center;line-height:1.4;font-style:italic}
+
+/* ─── PRODUCTS ─── */
+#products{background:var(--ivory)}
+.prod-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.prod-card{position:relative;overflow:hidden;border-radius:2px;cursor:default}
+.pc-img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .7s ease;display:block}
+.prod-card:hover .pc-img{transform:scale(1.06)}
+.pc-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(38,54,70,.9) 100%)}
+.pc-body{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.5rem}
+.pc-cat{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.4rem}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:.5rem}
+.pc-desc{font-size:.78rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.6;transform:translateY(8px);opacity:0;transition:all .35s}
+.prod-card:hover .pc-desc{opacity:1;transform:none}
+.pc-btn{display:inline-flex;align-items:center;margin-top:.7rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;border-bottom:1px solid rgba(184,151,90,.4);padding-bottom:2px;opacity:0;transform:translateY(8px);transition:all .35s .05s}
+.prod-card:hover .pc-btn{opacity:1;transform:none;color:#fff;border-color:rgba(255,255,255,.4)}
+.prod-note{text-align:center;margin-top:3rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-lt)}
+
+/* ─── CRAFT ─── */
+#craft{background:var(--cream);padding:0}
+.craft-g{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.craft-img{overflow:hidden}
+.craft-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;display:block}
+.craft-img:hover img{transform:scale(1.04)}
+.craft-copy{background:var(--navy-dark);display:flex;flex-direction:column;justify-content:center;padding:6rem 5rem;position:relative;overflow:hidden}
+.craft-copy::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid rgba(184,151,90,.1);bottom:-80px;right:-80px;pointer-events:none}
+.craft-copy .lbl{color:var(--gold-lt);margin-bottom:.5rem}
+.craft-copy .heading{color:#fff;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:1rem}
+.craft-copy .rule{margin:1.2rem 0}
+.craft-copy .body-text{color:rgba(255,255,255,.45);margin-bottom:.8rem}
+.craft-stats{display:flex;gap:2.5rem;margin-top:2rem}
+.cs-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--gold-lt);line-height:1;display:block}
+.cs-lbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-top:.2rem}
+
+/* ─── NATURE ─── */
+#nature{background:var(--parchment);padding:0}
+.nat-g{display:grid;grid-template-columns:1fr 1fr;min-height:540px}
+.nat-copy{display:flex;flex-direction:column;justify-content:center;padding:6rem 5rem;background:var(--parchment)}
+.nat-copy .lbl{margin-bottom:.5rem}
+.nat-copy .heading{font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:1rem}
+.nat-copy .rule{margin:1.2rem 0}
+.nat-copy .body-text{margin-bottom:.8rem}
+.nat-img{overflow:hidden}
+.nat-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;display:block}
+.nat-img:hover img{transform:scale(1.04)}
+
+/* ─── TESTIMONIALS ─── */
+#testimonials{background:var(--ivory)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.t-card{background:var(--cream);padding:2.6rem 2.2rem;border-radius:2px;border-top:2px solid var(--gold);transition:box-shadow .3s,transform .3s}
+.t-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
+.t-orn{font-family:'Cormorant Garamond',serif;font-size:4.5rem;color:var(--gold-lt);opacity:.2;line-height:.7;margin-bottom:1.2rem;display:block}
+.t-stars{color:var(--gold);font-size:.8rem;letter-spacing:.1em;margin-bottom:.8rem}
+.t-txt{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-mid);line-height:1.8;margin-bottom:1.4rem}
+.t-div{width:32px;height:1px;background:var(--gold);margin-bottom:.8rem}
+.t-name{font-size:.8rem;font-weight:500;color:var(--navy-dark);letter-spacing:.05em}
+.t-loc{font-size:.72rem;color:var(--text-lt);font-weight:300;margin-top:.15rem}
+
+/* ─── CONTACT ─── */
+#contact{background:var(--navy-dark);position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 10% 90%,rgba(184,151,90,.1) 0%,transparent 50%),radial-gradient(circle at 90% 10%,rgba(184,151,90,.07) 0%,transparent 45%);pointer-events:none}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1;padding:8rem 2rem}
+.ct-txt .lbl{color:var(--gold-lt);margin-bottom:.5rem}
+.ct-txt .heading{color:#fff;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:.8rem}
+.ct-txt .body-text{color:rgba(255,255,255,.4);margin-bottom:2rem}
+.ct-cards{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+.ct-card{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,90,.2);border-radius:2px;padding:1rem 1.4rem;text-decoration:none;transition:background .25s,border-color .25s}
+.ct-card:hover{background:rgba(184,151,90,.1);border-color:rgba(184,151,90,.4)}
+.ct-icon{width:38px;height:38px;background:rgba(184,151,90,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ct-num{font-size:.9rem;font-weight:500;color:#fff;display:block}
+.ct-lbl{font-size:.72rem;color:rgba(255,255,255,.3);font-weight:300}
+.ct-ctas{display:flex;flex-direction:column;gap:.8rem}
+.ct-note{font-size:.75rem;color:rgba(255,255,255,.25);font-weight:300;margin-top:.8rem}
+.ct-vis{position:relative}
+.ct-frame{border-radius:2px;overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:4/5}
+.ct-frame img{width:100%;height:100%;object-fit:cover}
+.ct-logo-float{position:absolute;bottom:-1.5rem;left:-1.5rem;width:110px;height:110px;background:var(--navy-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-md);border:4px solid var(--navy-dark);overflow:hidden}
+.ct-logo-float img{width:100%;height:100%;object-fit:contain}
+
+/* ─── FOOTER ─── */
+footer{background:#1a2730;padding:5rem 2rem 2.5rem}
+.fw{max-width:1200px;margin:0 auto}
+.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:5rem;padding-bottom:3rem;border-bottom:1px solid rgba(184,151,90,.12);margin-bottom:2rem}
+.f-logo-row{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.f-logo-img{width:52px;height:52px;object-fit:contain;border-radius:50%}
+.f-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:#fff;line-height:1.1}
+.f-name sub{display:block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:300}
+.f-desc{font-size:.82rem;color:rgba(255,255,255,.28);font-weight:300;line-height:1.8;max-width:290px;margin-bottom:1.4rem}
+.f-contacts{display:flex;flex-direction:column;gap:.4rem}
+.f-contacts a{font-size:.8rem;color:rgba(255,255,255,.38);text-decoration:none;font-weight:300;transition:color .2s;display:flex;align-items:center;gap:.5rem}
+.f-contacts a:hover{color:var(--gold-lt)}
+.f-col-h{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;font-weight:400}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.f-links a{text-decoration:none;font-size:.82rem;color:rgba(255,255,255,.32);font-weight:300;transition:color .2s}
+.f-links a:hover{color:var(--gold-lt)}
+.f-plist{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.f-plist li{font-size:.8rem;color:rgba(255,255,255,.26);font-weight:300}
+.fb{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-copy{font-size:.72rem;color:rgba(255,255,255,.2);font-weight:300}
+.f-close{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-style:italic;color:rgba(184,151,90,.4)}
+
+/* ─── FLOAT WA ─── */
+.float-wa{position:fixed;bottom:2rem;right:2rem;z-index:998;width:58px;height:58px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.55rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:transform .3s}
+.float-wa:hover{transform:scale(1.1)}
+.wa-ring{position:absolute;width:100%;height:100%;border-radius:50%;background:#25d366;animation:pulse 2.8s ease-out infinite;opacity:.5;z-index:-1}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .prod-g{grid-template-columns:repeat(2,1fr)}
+  .sc-grid{grid-template-columns:1fr 1fr}
+  .ft{grid-template-columns:1fr 1fr;gap:2.5rem}
+}
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;min-height:auto}
+  .hero-img{height:55vh}
+  .hero-copy{padding:4rem 2.5rem}
+  .hero-stamp{display:none}
+  .about-g{grid-template-columns:1fr;gap:3rem}
+  .about-cluster{padding-bottom:3rem;padding-right:3rem}
+  .craft-g,.nat-g{grid-template-columns:1fr}
+  .craft-img,.nat-img{aspect-ratio:4/3;overflow:hidden}
+  .craft-copy,.nat-copy{padding:4rem 2.5rem}
+  .t-grid{grid-template-columns:1fr 1fr}
+  .contact-inner{grid-template-columns:1fr;gap:3rem;padding:5rem 2rem}
+  .ct-vis{display:none}
+  .sc-grid{grid-template-columns:1fr}
+  nav ul,.nav-wa{display:none}
+  .burger{display:flex}
+  #nav{padding:0 1.5rem}
+}
+@media(max-width:620px){
+  .prod-g{grid-template-columns:1fr 1fr}
+  .t-grid{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .about-badge{display:none}
+  .ft{grid-template-columns:1fr;gap:2rem}
+  .sec{padding:5rem 1.4rem}
+  .hero-copy{padding:3rem 1.8rem}
+  .hero-ctas{flex-direction:column}
+  .craft-stats{gap:1.5rem}
+}
+@media(max-width:400px){
+  .prod-g{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav">
+  <a href="#hero" class="nav-logo">
+    <img src="PHOTO-2026-04-06-08-38-18.jpg" alt="DEV Herbal Soap Logo" class="nav-logo-img" onerror="this.style.display='none'">
+    <div class="nav-brand">DEV Herbal Soap<sub>Jaipur · Rajasthan</sub></div>
+  </a>
+  <nav><ul>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#showcase">Gallery</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul></nav>
+  <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap!" target="_blank" class="nav-wa">💬 WhatsApp</a>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</header>
+<div id="mob">
+  <a href="#about" class="mob-a">Our Story</a>
+  <a href="#showcase" class="mob-a">Gallery</a>
+  <a href="#products" class="mob-a">Products</a>
+  <a href="#testimonials" class="mob-a">Reviews</a>
+  <a href="#contact" class="mob-a">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img">
+    <img src="1image.jpeg" alt="DEV Herbal Soap Collection" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-copy">
+    <div class="hero-eye rv"><span class="hero-eye-txt">Handmade in Jaipur, Rajasthan</span></div>
+    <h1 class="hero-h1 rv">
+      <span class="hero-h1-main">Crafted<br>by Nature.</span>
+      <span class="hero-h1-brand">DEV Herbal Soap</span>
+    </h1>
+    <p class="hero-tag rv">Crafted by hand, powered by nature</p>
+    <div class="hero-rule rv"></div>
+    <p class="hero-desc rv">Pure herbal soaps and natural home care made with love in a Jaipur home. Every bar is a quiet ritual — honest ingredients, traditional wisdom, and the warmth of local hands.</p>
+    <div class="hero-ctas rv">
+      <a href="#products" class="btn btn-gold">Explore Products</a>
+      <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap!" target="_blank" class="btn btn-ghost">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stamp rv">
+      <div class="hero-stamp-c">
+        <div class="hero-stamp-i">
+          <span class="hero-stamp-n">100%</span>
+          <span class="hero-stamp-l">Natural<br>Herbal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-track">
+    <span class="mq-item">Handmade with Care <span class="mq-dot"></span></span>
+    <span class="mq-item">Pure Herbal Goodness <span class="mq-dot"></span></span>
+    <span class="mq-item">Crafted in Jaipur <span class="mq-dot"></span></span>
+    <span class="mq-item">Tradition in Every Bar <span class="mq-dot"></span></span>
+    <span class="mq-item">Natural &amp; Honest <span class="mq-dot"></span></span>
+    <span class="mq-item">Elegant Everyday Wellness <span class="mq-dot"></span></span>
+    <span class="mq-item">Handmade with Care <span class="mq-dot"></span></span>
+    <span class="mq-item">Pure Herbal Goodness <span class="mq-dot"></span></span>
+    <span class="mq-item">Crafted in Jaipur <span class="mq-dot"></span></span>
+    <span class="mq-item">Tradition in Every Bar <span class="mq-dot"></span></span>
+    <span class="mq-item">Natural &amp; Honest <span class="mq-dot"></span></span>
+    <span class="mq-item">Elegant Everyday Wellness <span class="mq-dot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-g">
+      <div class="about-cluster rl">
+        <img src="2image.jpeg" alt="DEV Herbal Soap" class="about-main" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+        <img src="logo_of_devhs.jpg" alt="Rose Soap" class="about-accent" onerror="this.style.display='none'">
+        <div class="about-badge"><span class="ab-num">13+</span><span class="ab-lbl">Varieties</span></div>
+      </div>
+      <div class="about-txt rr">
+        <div class="lbl">Our Story</div>
+        <h2 class="heading" style="margin-top:.5rem">Born in a Home,<br>Built on Care</h2>
+        <div class="pull">"We didn't start a factory. We started a practice — the quiet, careful art of making something honest."</div>
+        <p class="body-text">DEV Herbal Soap began the way most beautiful things do — at home, with intention. In the heart of Jaipur, Rajasthan, we began crafting herbal soaps by hand, inspired by India's long tradition of natural wellness.</p>
+        <p class="body-text" style="margin-top:.8rem">Every bar is made in small batches, with natural ingredients chosen for their purity and purpose — neem for cleansing, rose for softness, saffron for radiance, jasmine for calm. No shortcuts. No harsh chemicals. Just the good of nature, shaped by hand.</p>
+        <p class="body-text" style="margin-top:.8rem">We are a young brand, six months old and growing — not in size, but in care. And we believe that good things are worth making slowly.</p>
+        <div class="pillars">
+          <div class="pill"><div class="pill-dot"></div><div class="pill-txt"><strong>Handmade in Jaipur</strong><span>Home-crafted, small batch</span></div></div>
+          <div class="pill"><div class="pill-dot"></div><div class="pill-txt"><strong>Herbal Ingredients</strong><span>Natural botanicals only</span></div></div>
+          <div class="pill"><div class="pill-dot"></div><div class="pill-txt"><strong>No Harsh Chemicals</strong><span>Clean, honest formulas</span></div></div>
+          <div class="pill"><div class="pill-dot"></div><div class="pill-txt"><strong>Rooted in Tradition</strong><span>India's heritage of wellness</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE GALLERY -->
+<section id="showcase">
+  <div class="sc-grid">
+    <!-- Col 1 -->
+    <div class="sc-col">
+      <div class="sc-img tall">
+        <img src="image11.jpg" alt="Jasmine Soap" onerror="this.parentElement.style.background='#3a5068'">
+        <div class="sc-img-ov"></div>
+      </div>
+      <div class="sc-txt">
+        <div class="lbl">Premium · Natural</div>
+        <h3 class="heading">Every Bar<br>Tells a Story</h3>
+        <p class="body-text">Fragrances drawn from gardens, forests, and spice routes of India. Each soap is a sensory journey.</p>
+      </div>
+    </div>
+    <!-- Col 2 -->
+    <div class="sc-col">
+      <div class="sc-gold">
+        <div class="sc-gold-q">"Pure herbal goodness in every lather."</div>
+      </div>
+      <div class="sc-img wd">
+        <img src="logo_of_devhs.jpg" alt="Multani Mitti Soap" onerror="this.parentElement.style.background='#4d6b84'">
+        <div class="sc-img-ov"></div>
+      </div>
+      <div class="sc-img sq">
+        <img src="image7.jpg" alt="Rose shaped soap" onerror="this.parentElement.style.background='#6889a0'">
+        <div class="sc-img-ov"></div>
+      </div>
+    </div>
+    <!-- Col 3 -->
+    <div class="sc-col">
+      <div class="sc-img sq">
+        <img src="image12.jpg" alt="Saffron Soaps" onerror="this.parentElement.style.background='#3a5068'">
+        <div class="sc-img-ov"></div>
+      </div>
+      <div class="sc-img tall">
+        <img src="image13.jpg" alt="Jasmine soaps arrangement" onerror="this.parentElement.style.background='#263646'">
+        <div class="sc-img-ov"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="sec">
+  <div class="wrap">
+    <div class="sec-hd rv">
+      <div class="lbl-row">Our Products</div>
+      <h2 class="heading" style="margin-top:.8rem">Pure Herbal, Made by Hand</h2>
+      <p class="body-text" style="margin-top:.8rem">From skin-nourishing soaps to natural home care — everything we make begins with honest, herbal ingredients and ends with something your skin will thank you for.</p>
+    </div>
+    <div class="prod-g">
+      <div class="prod-card rv">
+        <img src="1image.jpeg" alt="Herbal Soaps" class="pc-img" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+        <div class="pc-ov"></div>
+        <div class="pc-body">
+          <span class="pc-cat">Natural Skincare</span>
+          <div class="pc-name">Herbal Soaps</div>
+          <div class="pc-desc">We offer a wide range of herbal soap varieties crafted using natural ingredients — rose, saffron, neem, jasmine, sandalwood, and more.</div>
+          <a href="#contact" class="pc-btn">Enquire Now →</a>
+        </div>
+      </div>
+      <div class="prod-card rv">
+        <img src="image13.jpg" alt="Herbal Liquid Detergent" class="pc-img" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+        <div class="pc-ov"></div>
+        <div class="pc-body">
+          <span class="pc-cat">Daily Cleansing</span>
+          <div class="pc-name">Liquid Detergent</div>
+          <div class="pc-desc">A natural, effective detergent that cleans deeply while staying soft on your hands.</div>
+          <a href="#contact" class="pc-btn">Enquire Now →</a>
+        </div>
+      </div>
+      <div class="prod-card rv">
+        <img src="image7.jpg" alt="Herbal Dish Wash" class="pc-img" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+        <div class="pc-ov"></div>
+        <div class="pc-body">
+          <span class="pc-cat">Kitchen &amp; Home</span>
+          <div class="pc-name">Dish Wash</div>
+          <div class="pc-desc">A natural dish wash formula that cuts through grease effortlessly while being safe for your family and gentle on the environment.</div>
+          <a href="#contact" class="pc-btn">Enquire Now →</a>
+        </div>
+      </div>
+      <div class="prod-card rv">
+        <img src="image11.jpg" alt="Incense Sticks" class="pc-img" onerror="this.parentElement.style.background='var(--navy-dark)'">
+        <div class="pc-ov"></div>
+        <div class="pc-body">
+          <span class="pc-cat">Sacred · Calm</span>
+          <div class="pc-name">Incense Sticks</div>
+          <div class="pc-desc">There are multiple fragrance varieties available in incense sticks. Please contact us to explore all options.</div>
+          <a href="#contact" class="pc-btn">Enquire Now →</a>
+        </div>
+      </div>
+    </div>
+    <p class="prod-note rv">All products are made in small batches in Jaipur. Delivery within Jaipur only.</p>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="https://wa.me/918118836753?text=Hello!%20I%20want%20to%20know%20more%20about%20DEV%20Herbal%20Soap." target="_blank" class="btn btn-navy rv">💬 Enquire on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFT -->
+<section id="craft">
+  <div class="craft-g">
+    <div class="craft-img">
+      <img src="image9.jpeg" alt="Handmade Soap" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+    </div>
+    <div class="craft-copy">
+      <div class="lbl rv">Crafted with Care</div>
+      <h2 class="heading rv" style="margin-top:.5rem;color:#fff">The Art of<br>Making by Hand</h2>
+      <div class="rule rv" style="margin:1.2rem 0"></div>
+      <p class="body-text rv" style="color:rgba(255,255,255,.45)">There are no machines involved. Every bar of DEV soap is shaped by hand, in a home in Jaipur. The process is slow by intention — because care cannot be rushed.</p>
+      <p class="body-text rv" style="color:rgba(255,255,255,.45);margin-top:.8rem">We select each botanical with purpose. Neem for its ancient antibacterial wisdom. Rose for softness. Saffron for radiance. Multani mitti for deep cleansing. Ingredients that Indian homes have trusted for generations.</p>
+      <div class="craft-stats rv">
+        <div><span class="cs-num">100%</span><span class="cs-lbl">Natural</span></div>
+        <div><span class="cs-num">13+</span><span class="cs-lbl">Varieties</span></div>
+        <div><span class="cs-num">Jaipur</span><span class="cs-lbl">Made Here</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATURE -->
+<section id="nature">
+  <div class="nat-g">
+    <div class="nat-copy">
+      <div class="lbl rv">Inspired by India</div>
+      <h2 class="heading rv" style="margin-top:.5rem">Tradition<br>in Modern Form</h2>
+      <div class="rule rv" style="margin:1.2rem 0"></div>
+      <p class="body-text rv">India has always known how to care for the skin. Long before serums and synthetic fragrances, there was neem, chandan, gulab, haldi, and kesar — ingredients grown in soil, harvested with knowledge, and used with intention.</p>
+      <p class="body-text rv" style="margin-top:.8rem">DEV Herbal Soap carries that wisdom forward. Our formulas are inspired by the traditional herbal practices of Rajasthan — presented in a clean, modern form that fits naturally into daily life.</p>
+      <div style="margin-top:2rem"><a href="#contact" class="btn btn-navy rv">Connect with Us</a></div>
+    </div>
+    <div class="nat-img">
+      <img src="image10.jpg" alt="Jasmine Soap natural" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="sec">
+  <div class="wrap">
+    <div class="sec-hd rv">
+      <div class="lbl-row">Customer Reviews</div>
+      <h2 class="heading" style="margin-top:.8rem">Trusted by Jaipur Families</h2>
+      <p class="body-text" style="margin-top:.8rem">Real words from real people. No filters, no fiction — just the honest experience of using DEV Herbal Soap every day.</p>
+    </div>
+    <div class="t-grid">
+      <div class="t-card rv">
+        <span class="t-orn">"</span>
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-txt">The soap feels very natural and the fragrance is really nice. You can clearly notice the handmade quality. It's different from anything you buy in the market.</p>
+        <div class="t-div"></div>
+        <div class="t-name">Gourish Kumawat</div>
+        <div class="t-loc">Jaipur, Rajasthan</div>
+      </div>
+      <div class="t-card rv">
+        <span class="t-orn">"</span>
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-txt">Very good product for daily use. The quality is nice and it feels gentle on the skin. I have been using it for a few weeks now and my skin feels softer.</p>
+        <div class="t-div"></div>
+        <div class="t-name">Vijender Kumawat</div>
+        <div class="t-loc">Jaipur, Rajasthan</div>
+      </div>
+      <div class="t-card rv">
+        <span class="t-orn">"</span>
+        <div class="t-stars">★ ★ ★ ★ ☆</div>
+        <p class="t-txt">Nice fragrance and clean packaging. The soaps look premium and natural. Gifted a few bars to my family and they all liked them very much.</p>
+        <div class="t-div"></div>
+        <div class="t-name">Kuldeep Soin</div>
+        <div class="t-loc">Jaipur, Rajasthan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="ct-txt">
+      <div class="lbl rv">Get in Touch</div>
+      <h2 class="heading rv" style="margin-top:.5rem;color:#fff">Order or<br>Enquire Today</h2>
+      <p class="body-text rv" style="color:rgba(255,255,255,.4);margin-top:.8rem">For orders and inquiries, please contact us via WhatsApp or call directly. We'll respond personally and promptly. Delivery currently available within Jaipur.</p>
+      <div class="ct-cards rv">
+        <a href="tel:+918118836753" class="ct-card">
+          <div class="ct-icon">📞</div>
+          <div><span class="ct-num">8118836753</span><span class="ct-lbl">Call or WhatsApp · Primary</span></div>
+        </a>
+        <a href="tel:+918696560755" class="ct-card">
+          <div class="ct-icon">📞</div>
+          <div><span class="ct-num">8696560755</span><span class="ct-lbl">Call or WhatsApp · Alternate</span></div>
+        </a>
+      </div>
+      <div class="ct-ctas rv">
+        <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap!%20I%27d%20like%20to%20place%20an%20order." target="_blank" class="btn btn-wa" style="justify-content:center">💬 &nbsp;Chat on WhatsApp</a>
+        <a href="tel:+918118836753" class="btn btn-ghost" style="justify-content:center">📞 &nbsp;Call Now</a>
+      </div>
+      <p class="ct-note rv">📍 Jaipur, Rajasthan &nbsp;·&nbsp; Delivery within Jaipur only</p>
+    </div>
+    <div class="ct-vis rr">
+      <div class="ct-frame">
+        <img src="image16.jpg" alt="DEV Rose Soap" onerror="this.src='PHOTO-2026-04-06-08-38-18.jpg'">
+      </div>
+      <div class="ct-logo-float">
+        <img src="image14.jpg" alt="DEV Logo" onerror="this.style.opacity='.4'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fw">
+    <div class="ft">
+      <div>
+        <div class="f-logo-row">
+          <img src="logo_of_devhs.jpg" alt="DEV Herbal Soap" class="f-logo-img" onerror="this.style.display='none'">
+          <div class="f-name">DEV Herbal Soap<sub>Jaipur · Rajasthan</sub></div>
+        </div>
+        <p class="f-desc">A home-based handmade herbal soap brand from Jaipur crafting natural products with pure ingredients, traditional wisdom, and genuine care.</p>
+        <div class="f-contacts">
+          <a href="tel:+918118836753">📞 8118836753</a>
+          <a href="tel:+918696560755">📞 8696560755</a>
+          <a href="https://wa.me/918118836753" target="_blank">💬 WhatsApp Enquiry</a>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-h">Navigation</div>
+        <ul class="f-links">
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#showcase">Gallery</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-h">Products</div>
+        <ul class="f-plist">
+          <li>Herbal Soaps</li>
+          <li>Rose · Jasmine · Neem</li>
+          <li>Saffron · Sandalwood</li>
+          <li>Lavender · Charcoal</li>
+          <li>Hand Wash</li>
+          <li>Dish Wash</li>
+          <li>Incense Sticks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fb">
+      <p class="f-copy">© 2026 DEV Herbal Soap · Jaipur, Rajasthan · All rights reserved</p>
+      <p class="f-close">Crafted by hand, powered by nature.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap!" class="float-wa" target="_blank" aria-label="WhatsApp">
+  <div class="wa-ring"></div>💬
+</a>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+
+const burger = document.getElementById('burger');
+const mob = document.getElementById('mob');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mob.classList.toggle('open');
+});
+document.querySelectorAll('.mob-a').forEach(l => l.addEventListener('click', () => {
+  burger.classList.remove('open'); mob.classList.remove('open');
+}));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const siblings = [...e.target.parentElement.querySelectorAll(':scope > .rv,:scope > .rl,:scope > .rr')];
+      const i = siblings.indexOf(e.target);
+      setTimeout(() => e.target.classList.add('in'), i * 90);
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: .12, rootMargin: '0px 0px -48px 0px'});
+document.querySelectorAll('.rv,.rl,.rr').forEach(el => io.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
+</body>
+</html>
