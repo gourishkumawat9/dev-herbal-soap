@@ -25,7 +25,10 @@
   --brown:     #8a7560;
   --text:      #2c3a44;
   --text-mid:  #4a5a66;
-  --text-lt:   #7a8e99;
+  --text-lt:   #5a6b76;
+  --gold-txt:  #7f6434;
+  --wa:        #0f7d42;
+  --wa-dk:     #0b6634;
   --border:    rgba(184,151,90,0.2);
   --sh-sm:     0 4px 20px rgba(44,58,68,0.07);
   --sh-md:     0 10px 48px rgba(44,58,68,0.11);
@@ -38,9 +41,12 @@ img{display:block;max-width:100%;height:auto}
 a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .skip-link{position:absolute;left:1rem;top:-60px;background:var(--navy-dark);color:#fff;padding:.8rem 1.4rem;font-size:.8rem;letter-spacing:.05em;text-decoration:none;z-index:1200;transition:top .25s;border-radius:2px}
 .skip-link:focus{top:1rem}
+a,button{touch-action:manipulation}
+html{scroll-padding-top:84px}
+.heading,.hero-h1-main{text-wrap:balance}
 
 /* ─── UTILITIES ─── */
-.lbl{display:inline-block;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:400}
+.lbl{display:inline-block;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-txt);font-weight:400}
 .lbl-row{display:flex;align-items:center;gap:1rem;justify-content:center}
 .lbl-row::before,.lbl-row::after{content:'';display:block;width:40px;height:1px;background:var(--gold)}
 .heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:600;color:var(--navy-dark);line-height:1.15}
@@ -49,7 +55,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-mid);transform:translateY(-2px)}
 .btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold-dk);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-ghost:hover{background:rgba(255,255,255,.08)}
-.btn-wa{background:#25d366;color:#fff}.btn-wa:hover{background:#1eba58;transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:var(--wa-dk);transform:translateY(-2px)}
 .rule{width:56px;height:1px;background:linear-gradient(90deg,var(--gold-lt),var(--gold))}
 
 /* ─── REVEAL ─── */
@@ -69,6 +75,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .nav-brand sub{display:block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:300;color:var(--gold);font-style:normal}
 #nav:not(.scrolled) .nav-brand{color:#fff}
 #nav.scrolled .nav-brand{color:var(--navy-dark)}
+#nav.scrolled .nav-brand sub{color:var(--gold-txt)}
 nav ul{list-style:none;display:flex;gap:2.4rem;align-items:center}
 nav a{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;font-weight:400;transition:color .25s;position:relative}
 nav a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s}
@@ -76,10 +83,11 @@ nav a:hover::after{transform:scaleX(1)}
 #nav:not(.scrolled) nav a{color:rgba(255,255,255,.75)}
 #nav:not(.scrolled) nav a:hover{color:#fff}
 #nav.scrolled nav a{color:var(--text-mid)}
-#nav.scrolled nav a:hover{color:var(--navy)}
-.nav-wa{display:flex;align-items:center;gap:.4rem;background:#25d366;color:#fff;padding:.5rem 1.2rem;border-radius:1px;text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:background .25s}
-.nav-wa:hover{background:#1eba58}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+#nav.scrolled nav a:hover,#nav.scrolled nav a.active{color:var(--navy)}
+nav a.active::after{transform:scaleX(1)}
+.nav-wa{display:flex;align-items:center;gap:.4rem;background:var(--wa);color:#fff;padding:.5rem 1.2rem;border-radius:1px;text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:background .25s}
+.nav-wa:hover{background:var(--wa-dk)}
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;padding:10px;margin-right:-10px;min-width:44px;min-height:44px}
 .burger span{display:block;width:24px;height:1.5px;background:#fff;transition:all .3s}
 #nav.scrolled .burger span{background:var(--navy)}
 .burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -91,6 +99,9 @@ nav a:hover::after{transform:scaleX(1)}
 /* fixed bar stays out of the way while the hero has its own top bar */
 #nav{transition:background .4s,box-shadow .4s,transform .6s cubic-bezier(.7,0,.2,1)}
 #nav.nav-hide{transform:translateY(-110%)}
+#nav.nav-hide:focus-within{transform:none;background:rgba(250,247,242,.97)}
+#nav.nav-hide:focus-within .nav-brand{color:var(--navy-dark)}
+#nav.nav-hide:focus-within nav a{color:var(--text-mid)}
 
 /* smooth scroll (Lenis) */
 html.lenis,html.lenis body{height:auto}
@@ -171,7 +182,7 @@ html.lenis,html.lenis body{height:auto}
 .hero-stamp text{font-family:'Jost',sans-serif;font-size:8.4px;letter-spacing:.18em;text-transform:uppercase;fill:rgba(245,240,232,.75)}
 .hero-stamp-i{position:absolute;inset:22px;border-radius:50%;background:rgba(184,151,90,.14);border:1px solid rgba(212,176,120,.35);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center}
 .hero-stamp-n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gold-lt);line-height:1}
-.hero-stamp-l{font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);line-height:1.3;text-align:center}
+.hero-stamp-l{font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);line-height:1.3;text-align:center}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 .hero-bottom{position:absolute;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding:0 2rem 1.8rem}
@@ -193,8 +204,8 @@ html.lenis,html.lenis body{height:auto}
 .pill-thumbs img:first-child{margin-left:0}
 .pill-chev{width:36px;height:36px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;transition:transform .4s}
 .pill-wrap.open .pill-chev{transform:rotate(180deg)}
-.pill-menu{position:absolute;left:0;right:0;bottom:calc(100% + .6rem);background:#fff;border-radius:22px;padding:.5rem;box-shadow:0 20px 60px rgba(0,0,0,.3);transform-origin:50% 100%;opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);transition:opacity .35s,transform .45s cubic-bezier(.2,.8,.2,1),visibility .35s}
-.pill-wrap.open .pill-menu{opacity:1;visibility:visible;transform:none}
+.pill-menu{position:absolute;left:0;right:0;bottom:calc(100% + .6rem);background:#fff;border-radius:22px;padding:.5rem;box-shadow:0 20px 60px rgba(0,0,0,.3);transform-origin:50% 100%;opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);transition:opacity .2s,transform .25s ease-in,visibility .2s}
+.pill-wrap.open .pill-menu{opacity:1;visibility:visible;transform:none;transition:opacity .35s,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s}
 .pill-menu a{display:flex;align-items:center;gap:.8rem;padding:.45rem .6rem;border-radius:14px;color:var(--text);text-decoration:none;font-size:.9rem;transition:background .2s}
 .pill-menu a:hover{background:var(--cream)}
 .pill-menu img,.pill-menu .pm-ic{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0}
@@ -205,9 +216,10 @@ html.lenis,html.lenis body{height:auto}
 /* ─── MARQUEE ─── */
 .mq{background:var(--gold);padding:.8rem 0;overflow:hidden}
 .mq-track{display:flex;white-space:nowrap;animation:mq 24s linear infinite}
-.mq-item{display:inline-flex;align-items:center;gap:1.4rem;padding:0 2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:400}
-.mq-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.5)}
+.mq-item{display:inline-flex;align-items:center;gap:1.4rem;padding:0 2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#1f2c38;font-weight:400}
+.mq-dot{width:3px;height:3px;border-radius:50%;background:rgba(31,44,56,.45)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq:hover .mq-track{animation-play-state:paused}
 
 /* ─── SECTION BASE ─── */
 .sec{padding:8rem 2rem}
@@ -224,7 +236,7 @@ html.lenis,html.lenis body{height:auto}
 .about-accent{position:absolute;bottom:0;right:0;width:55%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;box-shadow:var(--sh-lg);border:5px solid var(--cream)}
 .about-badge{position:absolute;top:2rem;left:-2rem;background:var(--navy-dark);color:#fff;padding:1.4rem 1.2rem;border-radius:2px;box-shadow:var(--sh-md);z-index:2;text-align:center}
 .ab-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--gold-lt);display:block;line-height:1}
-.ab-lbl{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-top:.2rem}
+.ab-lbl{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-top:.2rem}
 .about-txt .lbl{margin-bottom:.5rem}
 .about-txt .heading{margin-bottom:1.2rem}
 .pull{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-style:italic;color:var(--navy);border-left:2px solid var(--gold);padding-left:1.4rem;margin:1.8rem 0;line-height:1.6}
@@ -250,8 +262,8 @@ html.lenis,html.lenis body{height:auto}
 .sc-txt::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 100%,rgba(184,151,90,.08) 0%,transparent 60%)}
 .sc-txt .lbl{color:var(--gold-lt);margin-bottom:.6rem}
 .sc-txt .heading{color:#fff;font-size:clamp(1.6rem,2.5vw,2.2rem);margin-bottom:.8rem}
-.sc-txt .body-text{color:rgba(255,255,255,.45)}
-.sc-gold{background:var(--gold);display:flex;align-items:center;justify-content:center;padding:3rem;aspect-ratio:1}
+.sc-txt .body-text{color:rgba(255,255,255,.65)}
+.sc-gold{background:#a8874c;display:flex;align-items:center;justify-content:center;padding:3rem;aspect-ratio:1}
 .sc-gold-q{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#fff;text-align:center;line-height:1.4;font-style:italic}
 
 /* ─── PRODUCTS ─── */
@@ -274,10 +286,11 @@ html.lenis,html.lenis body{height:auto}
 .pc-body{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.5rem}
 .pc-cat{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.4rem}
 .pc-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:.5rem}
-.pc-desc{font-size:.78rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.6;transform:translateY(8px);opacity:0;transition:all .35s}
+.pc-desc{font-size:.78rem;color:rgba(255,255,255,.78);font-weight:300;line-height:1.6;transform:translateY(8px);opacity:0;transition:all .35s}
 .prod-card:hover .pc-desc{opacity:1;transform:none}
 .pc-btn{display:inline-flex;align-items:center;margin-top:.7rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;border-bottom:1px solid rgba(184,151,90,.4);padding-bottom:2px;opacity:0;transform:translateY(8px);transition:all .35s .05s}
 .prod-card:hover .pc-btn{opacity:1;transform:none;color:#fff;border-color:rgba(255,255,255,.4)}
+@media(hover:none){.pc-desc,.pc-btn{opacity:1;transform:none}}
 .prod-note{text-align:center;margin-top:3rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-lt)}
 
 /* ─── CATEGORIES ─── */
@@ -300,10 +313,10 @@ html.lenis,html.lenis body{height:auto}
 .craft-copy .lbl{color:var(--gold-lt);margin-bottom:.5rem}
 .craft-copy .heading{color:#fff;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:1rem}
 .craft-copy .rule{margin:1.2rem 0}
-.craft-copy .body-text{color:rgba(255,255,255,.45);margin-bottom:.8rem}
+.craft-copy .body-text{color:rgba(255,255,255,.65);margin-bottom:.8rem}
 .craft-stats{display:flex;gap:2.5rem;margin-top:2rem}
 .cs-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--gold-lt);line-height:1;display:block}
-.cs-lbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-top:.2rem}
+.cs-lbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.62);display:block;margin-top:.2rem}
 
 /* ─── NATURE ─── */
 #nature{background:var(--parchment);padding:0}
@@ -323,7 +336,7 @@ html.lenis,html.lenis body{height:auto}
 .t-card{background:var(--cream);padding:2.6rem 2.2rem;border-radius:2px;border-top:2px solid var(--gold);transition:box-shadow .3s,transform .3s}
 .t-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
 .t-orn{font-family:'Cormorant Garamond',serif;font-size:4.5rem;color:var(--gold-lt);opacity:.2;line-height:.7;margin-bottom:1.2rem;display:block}
-.t-stars{color:var(--gold);font-size:.8rem;letter-spacing:.1em;margin-bottom:.8rem}
+.t-stars{color:var(--gold-txt);font-size:.8rem;letter-spacing:.1em;margin-bottom:.8rem}
 .t-txt{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-mid);line-height:1.8;margin-bottom:1.4rem}
 .t-div{width:32px;height:1px;background:var(--gold);margin-bottom:.8rem}
 .t-name{font-size:.8rem;font-weight:500;color:var(--navy-dark);letter-spacing:.05em}
@@ -335,15 +348,15 @@ html.lenis,html.lenis body{height:auto}
 .contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1;padding:8rem 2rem}
 .ct-txt .lbl{color:var(--gold-lt);margin-bottom:.5rem}
 .ct-txt .heading{color:#fff;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:.8rem}
-.ct-txt .body-text{color:rgba(255,255,255,.4);margin-bottom:2rem}
+.ct-txt .body-text{color:rgba(255,255,255,.65);margin-bottom:2rem}
 .ct-cards{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
 .ct-card{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,90,.2);border-radius:2px;padding:1rem 1.4rem;text-decoration:none;transition:background .25s,border-color .25s}
 .ct-card:hover{background:rgba(184,151,90,.1);border-color:rgba(184,151,90,.4)}
 .ct-icon{width:38px;height:38px;background:rgba(184,151,90,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
 .ct-num{font-size:.9rem;font-weight:500;color:#fff;display:block}
-.ct-lbl{font-size:.72rem;color:rgba(255,255,255,.3);font-weight:300}
+.ct-lbl{font-size:.72rem;color:rgba(255,255,255,.6);font-weight:300}
 .ct-ctas{display:flex;flex-direction:column;gap:.8rem}
-.ct-note{font-size:.75rem;color:rgba(255,255,255,.25);font-weight:300;margin-top:.8rem}
+.ct-note{font-size:.75rem;color:rgba(255,255,255,.58);font-weight:300;margin-top:.8rem}
 .ct-vis{position:relative}
 .ct-frame{border-radius:2px;overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:4/5}
 .ct-frame img{width:100%;height:100%;object-fit:cover}
@@ -358,7 +371,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
 .f-logo-img{width:52px;height:52px;object-fit:contain;border-radius:50%}
 .f-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:#fff;line-height:1.1}
 .f-name sub{display:block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:300}
-.f-desc{font-size:.82rem;color:rgba(255,255,255,.45);font-weight:300;line-height:1.8;max-width:290px;margin-bottom:1.4rem}
+.f-desc{font-size:.82rem;color:rgba(255,255,255,.65);font-weight:300;line-height:1.8;max-width:290px;margin-bottom:1.4rem}
 .f-contacts{display:flex;flex-direction:column;gap:.4rem}
 .f-contacts a{font-size:.8rem;color:rgba(255,255,255,.55);text-decoration:none;font-weight:300;transition:color .2s;display:flex;align-items:center;gap:.5rem}
 .f-contacts a:hover{color:var(--gold-lt)}
@@ -367,17 +380,17 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
 .f-links a{text-decoration:none;font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;transition:color .2s}
 .f-links a:hover{color:var(--gold-lt)}
 .f-plist{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.f-plist li{font-size:.8rem;color:rgba(255,255,255,.45);font-weight:300}
+.f-plist li{font-size:.8rem;color:rgba(255,255,255,.65);font-weight:300}
 .fb{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.f-copy{font-size:.72rem;color:rgba(255,255,255,.4);font-weight:300}
-.f-close{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-style:italic;color:rgba(184,151,90,.4)}
+.f-copy{font-size:.72rem;color:rgba(255,255,255,.6);font-weight:300}
+.f-close{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-style:italic;color:rgba(212,176,120,.8)}
 
 /* ─── FLOAT WA ─── */
-.float-wa{position:fixed;bottom:2rem;right:2rem;z-index:998;width:58px;height:58px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.55rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:transform .3s}
+.float-wa{position:fixed;bottom:2rem;right:2rem;z-index:998;width:58px;height:58px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.55rem;text-decoration:none;box-shadow:0 6px 24px rgba(15,125,66,.45);transition:transform .3s}
 .float-wa:hover{transform:scale(1.1)}
 .float-wa{transition:transform .3s,opacity .4s}
 @media(min-width:901px){.in-hero .float-wa{opacity:0;pointer-events:none;transform:scale(.6)}}
-.wa-ring{position:absolute;width:100%;height:100%;border-radius:50%;background:#25d366;animation:pulse 2.8s ease-out infinite;opacity:.5;z-index:-1}
+.wa-ring{position:absolute;width:100%;height:100%;border-radius:50%;background:var(--wa);animation:pulse 2.8s ease-out infinite;opacity:.5;z-index:-1}
 @keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.8);opacity:0}}
 
 /* ─── RESPONSIVE ─── */
@@ -429,6 +442,8 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
   .prod-g{grid-template-columns:1fr 1fr}
   .t-grid{grid-template-columns:1fr}
   .pillars{grid-template-columns:1fr}
+  .body-text{font-size:1rem}
+  footer{padding-bottom:6.5rem}
   .about-badge{display:none}
   .ft{grid-template-columns:1fr;gap:2rem}
   .sec{padding:5rem 1.4rem}
@@ -573,12 +588,12 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
       <a href="#categories" class="hero-explore">Explore Products <span>→</span></a>
     </div>
     <div class="pill-wrap" id="pill">
-      <div class="pill-menu" id="pillMenu" role="menu">
-        <a href="#products" role="menuitem"><img src="2image.jpeg" alt=""><span>Herbal Soaps<small>Rose, jasmine, neem, saffron &amp; multani mitti</small></span></a>
-        <a href="#products" role="menuitem"><img src="image13.jpg" alt=""><span>Liquid Detergent<small>Herbal formula for laundry &amp; utensils</small></span></a>
-        <a href="#products" role="menuitem"><img src="image7.jpg" alt=""><span>Dish Wash<small>Cuts grease, gentle on hands</small></span></a>
-        <a href="#products" role="menuitem"><span class="pm-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6M8 8c0 2-2 3-2 6a6 6 0 0 0 12 0c0-3-2-4-2-6"/><path d="M4.5 20.5h15"/></svg></span><span>Hand Wash<small>Everyday herbal hand cleanser</small></span></a>
-        <a href="#products" role="menuitem"><img src="image11.jpg" alt=""><span>Kasturi Dhoop<small>Pure incense sticks, traditional fragrance</small></span></a>
+      <div class="pill-menu" id="pillMenu">
+        <a href="#products"><img src="2image.jpeg" alt="" loading="lazy" decoding="async"><span>Herbal Soaps<small>Rose, jasmine, neem, saffron &amp; multani mitti</small></span></a>
+        <a href="#products"><img src="image13.jpg" alt="" loading="lazy" decoding="async"><span>Liquid Detergent<small>Herbal formula for laundry &amp; utensils</small></span></a>
+        <a href="#products"><img src="image7.jpg" alt="" loading="lazy" decoding="async"><span>Dish Wash<small>Cuts grease, gentle on hands</small></span></a>
+        <a href="#products"><span class="pm-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6M8 8c0 2-2 3-2 6a6 6 0 0 0 12 0c0-3-2-4-2-6"/><path d="M4.5 20.5h15"/></svg></span><span>Hand Wash<small>Everyday herbal hand cleanser</small></span></a>
+        <a href="#products"><img src="image11.jpg" alt="" loading="lazy" decoding="async"><span>Kasturi Dhoop<small>Pure incense sticks, traditional fragrance</small></span></a>
       </div>
       <button class="pill-btn" id="pillBtn" aria-expanded="false" aria-controls="pillMenu">
         <span class="pill-thumbs" aria-hidden="true"><img src="image6.jpeg" alt=""><img src="image13.jpg" alt=""><img src="image11.jpg" alt=""></span>
@@ -593,12 +608,12 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
 <!-- MARQUEE -->
 <div class="mq">
   <div class="mq-track">
-    <span class="mq-item">Handmade with Care <span class="mq-dot"></span></span>
-    <span class="mq-item">Pure Herbal Goodness <span class="mq-dot"></span></span>
-    <span class="mq-item">Crafted in Jaipur <span class="mq-dot"></span></span>
-    <span class="mq-item">Soaps · Dhoop · Home Care <span class="mq-dot"></span></span>
-    <span class="mq-item">Natural &amp; Honest <span class="mq-dot"></span></span>
-    <span class="mq-item">Trusted Everyday Essentials <span class="mq-dot"></span></span>
+    <span class="mq-item" aria-hidden="true">Handmade with Care <span class="mq-dot"></span></span>
+    <span class="mq-item" aria-hidden="true">Pure Herbal Goodness <span class="mq-dot"></span></span>
+    <span class="mq-item" aria-hidden="true">Crafted in Jaipur <span class="mq-dot"></span></span>
+    <span class="mq-item" aria-hidden="true">Soaps · Dhoop · Home Care <span class="mq-dot"></span></span>
+    <span class="mq-item" aria-hidden="true">Natural &amp; Honest <span class="mq-dot"></span></span>
+    <span class="mq-item" aria-hidden="true">Trusted Everyday Essentials <span class="mq-dot"></span></span>
     <span class="mq-item">Handmade with Care <span class="mq-dot"></span></span>
     <span class="mq-item">Pure Herbal Goodness <span class="mq-dot"></span></span>
     <span class="mq-item">Crafted in Jaipur <span class="mq-dot"></span></span>
@@ -651,8 +666,8 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
   <div class="wrap">
     <div class="about-g">
       <div class="about-cluster rl">
-        <img src="2image.jpeg" alt="Stack of DEV Jasmine Soap bars" class="about-main" onerror="this.src='image9.jpeg'">
-        <img src="image6.jpeg" alt="DEV Rose Soap close-up" class="about-accent" onerror="this.style.display='none'">
+        <img loading="lazy" decoding="async" width="1024" height="1536" src="2image.jpeg" alt="Stack of DEV Jasmine Soap bars" class="about-main" onerror="this.src='image9.jpeg'">
+        <img loading="lazy" decoding="async" width="1200" height="1600" src="image6.jpeg" alt="DEV Rose Soap close-up" class="about-accent" onerror="this.style.display='none'">
         <div class="about-badge"><span class="ab-num">13+</span><span class="ab-lbl">Varieties</span></div>
       </div>
       <div class="about-txt rr">
@@ -679,7 +694,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
     <!-- Col 1 -->
     <div class="sc-col">
       <div class="sc-img tall">
-        <img src="image12.jpg" alt="DEV Saffron Soap stack" onerror="this.parentElement.style.background='#3a5068'">
+        <img loading="lazy" decoding="async" width="1080" height="816" src="image12.jpg" alt="DEV Saffron Soap stack" onerror="this.parentElement.style.background='#3a5068'">
         <div class="sc-img-ov"></div>
       </div>
       <div class="sc-txt">
@@ -694,22 +709,22 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
         <div class="sc-gold-q">"Pure herbal goodness in every lather."</div>
       </div>
       <div class="sc-img wd">
-        <img src="4image.jpeg" alt="DEV Multani Mitti Soap" onerror="this.parentElement.style.background='#4d6b84'">
+        <img loading="lazy" decoding="async" width="853" height="1280" src="4image.jpeg" alt="DEV Multani Mitti Soap" onerror="this.parentElement.style.background='#4d6b84'">
         <div class="sc-img-ov"></div>
       </div>
       <div class="sc-img sq">
-        <img src="image7.jpg" alt="DEV Herbal Dish Wash bottles" onerror="this.parentElement.style.background='#6889a0'">
+        <img loading="lazy" decoding="async" width="1536" height="1024" src="image7.jpg" alt="DEV Herbal Dish Wash bottles" onerror="this.parentElement.style.background='#6889a0'">
         <div class="sc-img-ov"></div>
       </div>
     </div>
     <!-- Col 3 -->
     <div class="sc-col">
       <div class="sc-img sq">
-        <img src="image13.jpg" alt="DEV Herbal Liquid Detergent bottle" onerror="this.parentElement.style.background='#3a5068'">
+        <img loading="lazy" decoding="async" width="853" height="1280" src="image13.jpg" alt="DEV Herbal Liquid Detergent bottle" onerror="this.parentElement.style.background='#3a5068'">
         <div class="sc-img-ov"></div>
       </div>
       <div class="sc-img tall">
-        <img src="image11.jpg" alt="DEV Kasturi Dhoop incense sticks" onerror="this.parentElement.style.background='#263646'">
+        <img loading="lazy" decoding="async" width="1080" height="721" src="image11.jpg" alt="DEV Kasturi Dhoop incense sticks" onerror="this.parentElement.style.background='#263646'">
         <div class="sc-img-ov"></div>
       </div>
     </div>
@@ -726,7 +741,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
     </div>
     <div class="prod-g">
       <div class="prod-card rv">
-        <img src="1image.jpeg" alt="Herbal Soaps" class="pc-img" onerror="this.src='image9.jpeg'">
+        <img loading="lazy" decoding="async" width="853" height="1280" src="1image.jpeg" alt="Herbal Soaps" class="pc-img" onerror="this.src='image9.jpeg'">
         <div class="pc-ov"></div>
         <div class="pc-body">
           <span class="pc-cat">Natural Skincare</span>
@@ -736,7 +751,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
         </div>
       </div>
       <div class="prod-card rv">
-        <img src="image13.jpg" alt="Herbal Liquid Detergent" class="pc-img" onerror="this.src='image9.jpeg'">
+        <img loading="lazy" decoding="async" width="853" height="1280" src="image13.jpg" alt="Herbal Liquid Detergent" class="pc-img" onerror="this.src='image9.jpeg'">
         <div class="pc-ov"></div>
         <div class="pc-body">
           <span class="pc-cat">Daily Cleansing</span>
@@ -746,7 +761,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
         </div>
       </div>
       <div class="prod-card rv">
-        <img src="image7.jpg" alt="Herbal Dish Wash" class="pc-img pc-img-crop-tight" onerror="this.src='image9.jpeg'">
+        <img loading="lazy" decoding="async" width="1536" height="1024" src="image7.jpg" alt="Herbal Dish Wash" class="pc-img pc-img-crop-tight" onerror="this.src='image9.jpeg'">
         <div class="pc-ov"></div>
         <div class="pc-body">
           <span class="pc-cat">Kitchen &amp; Home</span>
@@ -765,7 +780,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
         </div>
       </div>
       <div class="prod-card rv">
-        <img src="image11.jpg" alt="Kasturi Dhoop Incense Sticks" class="pc-img pc-img-crop-tighter" onerror="this.parentElement.style.background='var(--navy-dark)'">
+        <img loading="lazy" decoding="async" width="1080" height="721" src="image11.jpg" alt="Kasturi Dhoop Incense Sticks" class="pc-img pc-img-crop-tighter" onerror="this.parentElement.style.background='var(--navy-dark)'">
         <div class="pc-ov"></div>
         <div class="pc-body">
           <span class="pc-cat">Sacred · Calm</span>
@@ -786,14 +801,14 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
 <section id="craft">
   <div class="craft-g">
     <div class="craft-img">
-      <img src="image9.jpeg" alt="Pyramid of handmade DEV soap bars" onerror="this.src='image16.jpg'">
+      <img loading="lazy" decoding="async" width="1024" height="1536" src="image9.jpeg" alt="Pyramid of handmade DEV soap bars" onerror="this.src='image16.jpg'">
     </div>
     <div class="craft-copy">
       <div class="lbl rv">Crafted with Care</div>
       <h2 class="heading rv" style="margin-top:.5rem;color:#fff">The Art of<br>Making by Hand</h2>
       <div class="rule rv" style="margin:1.2rem 0"></div>
-      <p class="body-text rv" style="color:rgba(255,255,255,.45)">There are no machines involved. Every bar of DEV soap is shaped by hand, in a home in Jaipur. The process is slow by intention — because care cannot be rushed.</p>
-      <p class="body-text rv" style="color:rgba(255,255,255,.45);margin-top:.8rem">We select each botanical with purpose. Neem, valued in Indian tradition for generations. Rose for softness. Saffron for radiance. Multani mitti for deep cleansing. Ingredients that Indian homes have trusted for generations.</p>
+      <p class="body-text rv" style="color:rgba(255,255,255,.65)">There are no machines involved. Every bar of DEV soap is shaped by hand, in a home in Jaipur. The process is slow by intention — because care cannot be rushed.</p>
+      <p class="body-text rv" style="color:rgba(255,255,255,.65);margin-top:.8rem">We select each botanical with purpose. Neem, valued in Indian tradition for generations. Rose for softness. Saffron for radiance. Multani mitti for deep cleansing. Ingredients that Indian homes have trusted for generations.</p>
       <div class="craft-stats rv">
         <div><span class="cs-num">100%</span><span class="cs-lbl">Natural</span></div>
         <div><span class="cs-num">13+</span><span class="cs-lbl">Varieties</span></div>
@@ -815,7 +830,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
       <div style="margin-top:2rem"><a href="#contact" class="btn btn-navy rv">Connect with Us</a></div>
     </div>
     <div class="nat-img">
-      <img src="image10.jpg" alt="Natural herbal ingredients — saffron, rose, jasmine, turmeric" onerror="this.src='image9.jpeg'">
+      <img loading="lazy" decoding="async" width="843" height="1280" src="image10.jpg" alt="Natural herbal ingredients — saffron, rose, jasmine, turmeric" onerror="this.src='image9.jpeg'">
     </div>
   </div>
 </section>
@@ -830,24 +845,24 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
     </div>
     <div class="t-grid">
       <div class="t-card rv">
-        <span class="t-orn">"</span>
-        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <span class="t-orn" aria-hidden="true">"</span>
+        <div class="t-stars" role="img" aria-label="Rated 5 out of 5">★ ★ ★ ★ ★</div>
         <p class="t-txt">The soap feels very natural and the fragrance is really nice. You can clearly notice the handmade quality. It's different from anything you buy in the market.</p>
         <div class="t-div"></div>
         <div class="t-name">Gourish Kumawat</div>
         <div class="t-loc">Jaipur, Rajasthan</div>
       </div>
       <div class="t-card rv">
-        <span class="t-orn">"</span>
-        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <span class="t-orn" aria-hidden="true">"</span>
+        <div class="t-stars" role="img" aria-label="Rated 5 out of 5">★ ★ ★ ★ ★</div>
         <p class="t-txt">Very good product for daily use. The quality is nice and it feels gentle on the skin. I have been using it for a few weeks now and my skin feels softer.</p>
         <div class="t-div"></div>
         <div class="t-name">Vijender Kumawat</div>
         <div class="t-loc">Jaipur, Rajasthan</div>
       </div>
       <div class="t-card rv">
-        <span class="t-orn">"</span>
-        <div class="t-stars">★ ★ ★ ★ ☆</div>
+        <span class="t-orn" aria-hidden="true">"</span>
+        <div class="t-stars" role="img" aria-label="Rated 4 out of 5">★ ★ ★ ★ ☆</div>
         <p class="t-txt">Nice fragrance and clean packaging. The soaps look premium and natural. Gifted a few bars to my family and they all liked them very much.</p>
         <div class="t-div"></div>
         <div class="t-name">Kuldeep Soin</div>
@@ -863,7 +878,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
     <div class="ct-txt">
       <div class="lbl rv">Get in Touch</div>
       <h2 class="heading rv" style="margin-top:.5rem;color:#fff">Order or<br>Enquire Today</h2>
-      <p class="body-text rv" style="color:rgba(255,255,255,.4);margin-top:.8rem">For orders and inquiries, please contact us via WhatsApp or call directly. We'll respond personally and promptly. Delivery currently available within Jaipur.</p>
+      <p class="body-text rv" style="color:rgba(255,255,255,.65);margin-top:.8rem">For orders and inquiries, please contact us via WhatsApp or call directly. We'll respond personally and promptly. Delivery currently available within Jaipur.</p>
       <div class="ct-cards rv">
         <a href="tel:+918118836753" class="ct-card">
           <div class="ct-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
@@ -882,10 +897,10 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
     </div>
     <div class="ct-vis rr">
       <div class="ct-frame">
-        <img src="image16.jpg" alt="DEV Herbal Products — full range" onerror="this.src='image9.jpeg'">
+        <img loading="lazy" decoding="async" width="1280" height="853" src="image16.jpg" alt="DEV Herbal Products — full range" onerror="this.src='image9.jpeg'">
       </div>
       <div class="ct-logo-float">
-        <img src="image14.jpg" alt="DEV Logo" onerror="this.style.opacity='.4'">
+        <img loading="lazy" decoding="async" width="831" height="676" src="image14.jpg" alt="DEV Logo" onerror="this.style.opacity='.4'">
       </div>
     </div>
   </div>
@@ -897,7 +912,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
     <div class="ft">
       <div>
         <div class="f-logo-row">
-          <img src="logo_of_devhs.jpg" alt="DEV Herbal Soap" class="f-logo-img" onerror="this.style.display='none'">
+          <img loading="lazy" decoding="async" width="836" height="672" src="logo_of_devhs.jpg" alt="DEV Herbal Soap" class="f-logo-img" onerror="this.style.display='none'">
           <div class="f-name">DEV Herbal Soap<sub>Jaipur · Rajasthan</sub></div>
         </div>
         <p class="f-desc">A home-based handmade herbal products brand from Jaipur — soaps, dhoop, liquid detergent, dish wash and hand wash, crafted with pure ingredients and genuine care.</p>
@@ -999,6 +1014,20 @@ const io = new IntersectionObserver((entries) => {
 }, {threshold: .12, rootMargin: '0px 0px -48px 0px'});
 document.querySelectorAll('.rv,.rl,.rr').forEach(el => io.observe(el));
 
+// highlight the fixed-nav link for the section on screen
+const navLinks = [...document.querySelectorAll('#nav nav a')];
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    navLinks.forEach(a => {
+      const on = a.getAttribute('href') === '#' + e.target.id;
+      a.classList.toggle('active', on);
+      on ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current');
+    });
+  });
+}, {rootMargin: '-45% 0px -50% 0px'});
+navLinks.forEach(a => { const t = document.querySelector(a.getAttribute('href')); t && spy.observe(t); });
+
 let lenis = null;
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
@@ -1080,7 +1109,14 @@ function initMotion() {
     .from(['.hero-bl', '.pill-wrap', '.hero-scroll'], {y: 30, opacity: 0, duration: 1, stagger: .1}, .9)
     .from('.bubbles', {opacity: 0, duration: 1.5}, 1.2);
 
-  /* ── PRELOADER ── */
+  /* ── PRELOADER (full sequence once per visit; straight to the intro after that) ── */
+  let seen = false;
+  try { seen = sessionStorage.getItem('dev-intro') === '1'; sessionStorage.setItem('dev-intro', '1'); } catch (e) {}
+  if (seen) {
+    removeLoader();
+    lenis && lenis.start();
+    intro.play();
+  } else {
   const num = loader.querySelector('.ld-num');
   const count = {v: 0};
   const pageLoaded = new Promise(r => {
@@ -1099,6 +1135,7 @@ function initMotion() {
       .to(loader, {yPercent: -100, duration: 1.1, ease: 'expo.inOut'}, '-=.1')
       .add(() => intro.play(), '-=.6');
   });
+  }
 
   /* ── HERO SCROLL: soap travels down & turns, copy lifts away ── */
   gsap.timeline({scrollTrigger: {trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true}})
@@ -1129,7 +1166,7 @@ function initMotion() {
 
   /* ── QUOTES: words light up as you scroll ── */
   document.querySelectorAll('.pull, .sc-gold-q').forEach(q => {
-    gsap.fromTo(split(q, false), {opacity: .15}, {opacity: 1, stagger: .1, ease: 'none',
+    gsap.fromTo(split(q, false), {opacity: .2}, {opacity: 1, stagger: .1, ease: 'none',
       scrollTrigger: {trigger: q, start: 'top 85%', end: 'bottom 55%', scrub: true}});
   });
 
@@ -1166,9 +1203,13 @@ function initMotion() {
 
   /* ── MARQUEE follows scroll speed & direction ── */
   const track = document.querySelector('.mq-track');
-  let mqX = 0, dir = 1, boost = 0;
+  let mqX = 0, dir = 1, boost = 0, mqPaused = false;
+  const mq = document.querySelector('.mq');
+  mq.addEventListener('pointerenter', () => { mqPaused = true; });
+  mq.addEventListener('pointerleave', () => { mqPaused = false; });
   ScrollTrigger.create({onUpdate: self => { dir = self.direction; boost = Math.min(Math.abs(self.getVelocity()) / 250, 8); }});
   gsap.ticker.add((time, dt) => {
+    if (mqPaused) return;
     const half = track.scrollWidth / 2;
     mqX = gsap.utils.wrap(-half, 0, mqX - (half / 24000) * (1 + boost) * dt * dir);
     boost *= .93;
