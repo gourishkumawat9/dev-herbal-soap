@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — DEV Herbal Soap</title>
+<meta name="description" content="DEV Herbal Soap products — herbal soaps, liquid detergent, dish wash, hand wash and Kasturi dhoop sticks, handmade in small batches in Jaipur, Rajasthan.">
+<link rel="icon" href="logo_of_devhs.jpg">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./js/three.module.min.js"}}</script>
+<style>
+/* ─── PRODUCTS PAGE ─── */
+html{scroll-padding-top:140px}
+.ph{position:relative;overflow:hidden;color:var(--cream);background:linear-gradient(180deg,#161f28 0%,#1f2c38 55%,#3b4549 100%);padding:11rem 2rem 6rem}
+.ph-in{position:relative;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.ph .hero-model{width:100%;max-width:520px;justify-self:center}
+.ph-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,7vw,7.2rem);line-height:.95;letter-spacing:-.02em;max-width:13ch;text-wrap:balance}
+.ph-h1 .sw{padding-bottom:.18em;margin-bottom:-.18em}
+.ph-desc{max-width:540px;margin-top:1.8rem;color:rgba(245,240,232,.78);font-weight:300;font-size:1rem;line-height:1.8}
+.ph-glow{position:absolute;right:-10vw;top:-10vw;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(212,176,120,.16),transparent 65%);pointer-events:none}
+.chips{position:sticky;top:72px;z-index:50;background:rgba(250,247,242,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.chips-in{max-width:1200px;margin:0 auto;display:flex;gap:.6rem;padding:.75rem 2rem;overflow-x:auto;scrollbar-width:none}
+.chips-in::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;display:inline-flex;align-items:center;min-height:40px;padding:0 1.1rem;border:1px solid rgba(38,54,70,.18);border-radius:999px;font-size:.85rem;text-transform:none;letter-spacing:.01em;color:var(--text-mid);text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+.chip::after{display:none}
+.chip:hover{border-color:var(--navy);color:var(--navy-dark)}
+.chip.active{background:var(--navy-dark);border-color:var(--navy-dark);color:#fff}
+.prod{padding:8rem 2rem;background:var(--ivory)}
+.prod.flip{background:var(--cream)}
+.prod-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.prod.flip .prod-vis{order:2}
+.prod-vis{position:relative}
+.prod-media{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:4/5;box-shadow:var(--sh-lg);background:var(--navy-dark)}
+.prod-media.land{aspect-ratio:4/3}
+.prod-media img{width:100%;height:100%;object-fit:cover}
+.prod-media-ic{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;background:radial-gradient(circle at 30% 20%,#33485c,var(--navy-dark) 70%)}
+.pm-big{width:150px;height:150px;border-radius:50%;border:1px solid rgba(212,176,120,.35);display:flex;align-items:center;justify-content:center;color:var(--gold-lt)}
+.pm-big svg{width:64px;height:64px}
+.pm-cap{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-lt)}
+.prod-badge{position:absolute;right:-1.6rem;bottom:2rem;background:var(--navy-dark);color:rgba(255,255,255,.7);padding:1.2rem 1.4rem;border-radius:2px;box-shadow:var(--sh-md);text-align:center;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase}
+.prod-badge span{display:block;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--gold-lt);letter-spacing:0;line-height:1}
+.prod-num{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(4rem,8vw,6.5rem);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--gold);margin-bottom:1rem}
+.prod-txt .heading{margin:.5rem 0 1.2rem}
+.prod-point{display:flex;align-items:center;gap:.8rem;margin-top:1.4rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--navy)}
+.prod-point-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:var(--navy-dark);color:var(--gold-lt);display:flex;align-items:center;justify-content:center}
+.prod-point-ic svg{width:20px;height:20px}
+.prod-vars{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
+.prod-vars li{padding:.4rem .9rem;border:1px solid var(--border);border-radius:999px;font-size:.8rem;color:var(--text-mid);background:rgba(255,255,255,.5)}
+.prod-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+.btn-line{background:transparent;color:var(--navy-dark);border:1px solid rgba(38,54,70,.3)}
+.btn-line:hover{border-color:var(--navy-dark);transform:translateY(-2px)}
+.pnote{padding:5rem 2rem;text-align:center;background:var(--ivory)}
+.pnote p{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--text-lt)}
+.contact-inner.solo{grid-template-columns:1fr;max-width:760px}
+@media(max-width:900px){
+  .ph{padding:8rem 1.5rem 4rem}
+  .ph-in{grid-template-columns:1fr}
+  .ph .hero-model{width:min(86vw,420px);margin-top:3rem}
+  .prod{padding:5rem 1.5rem}
+  .prod-in{grid-template-columns:1fr;gap:3rem}
+  .prod.flip .prod-vis{order:0}
+  .prod-badge{right:1rem;bottom:1rem}
+  .chips-in{padding:.7rem 1.5rem}
+}
+</style>
+</head>
+<body class="page-products">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- NAV -->
+<header id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo_of_devhs.jpg" alt="DEV Herbal Soap Logo" class="nav-logo-img" onerror="this.style.display='none'">
+    <div class="nav-brand">DEV Herbal Soap<sub>Jaipur · Rajasthan</sub></div>
+  </a>
+  <nav><ul>
+    <li><a href="products.html" class="active" aria-current="page">Products</a></li>
+    <li><a href="index.html#about">Our Story</a></li>
+    <li><a href="index.html#showcase">Gallery</a></li>
+    <li><a href="index.html#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul></nav>
+  <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap!" target="_blank" class="nav-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg> WhatsApp</a>
+  <button class="burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
+</header>
+<div id="mob">
+  <a href="products.html" class="mob-a">Products</a>
+  <a href="index.html#about" class="mob-a">Our Story</a>
+  <a href="index.html#showcase" class="mob-a">Gallery</a>
+  <a href="index.html#testimonials" class="mob-a">Reviews</a>
+  <a href="#contact" class="mob-a">Contact</a>
+</div>
+
+<main id="main">
+<!-- PAGE HEADER -->
+<header class="ph">
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="ph-glow" aria-hidden="true"></div>
+  <div class="ph-in">
+    <div>
+      <div class="hero-eye"><span class="hero-eye-txt">Our Products</span></div>
+      <h1 class="ph-h1" data-split>Five Categories, One Standard of Care</h1>
+      <p class="ph-desc">DEV makes more than soap — herbal soaps sit alongside dhoop, liquid detergent, dish wash and hand wash, all crafted with the same honest, herbal ingredients.</p>
+    </div>
+    <figure class="hero-model">
+      <span class="hero-model-shadow" aria-hidden="true"></span>
+      <div class="hero-model-in">
+        <img src="soap-model.webp" alt="DEV Rose Soap — handmade herbal soap bar" width="1513" height="1015" fetchpriority="high">
+      </div>
+    </figure>
+  </div>
+</header>
+
+<!-- CATEGORY JUMP BAR -->
+<nav class="chips" aria-label="Product categories">
+  <div class="chips-in">
+    <a href="#herbal-soaps" class="chip">Herbal Soaps</a>
+    <a href="#liquid-detergent" class="chip">Liquid Detergent</a>
+    <a href="#dish-wash" class="chip">Dish Wash</a>
+    <a href="#hand-wash" class="chip">Hand Wash</a>
+    <a href="#kasturi-dhoop" class="chip">Kasturi Dhoop Sticks</a>
+  </div>
+</nav>
+
+<!-- PRODUCTS -->
+<section class="prod" id="herbal-soaps" aria-labelledby="herbal-soaps-h">
+  <div class="prod-in">
+    <div class="prod-vis rv">
+        <div class="prod-media">
+          <img loading="eager" decoding="async" width="1024" height="1536" src="2image.jpeg" alt="Stack of DEV Jasmine Soap bars with yellow flowers">
+        </div>
+          <div class="prod-badge"><span>13+</span>Varieties</div>
+    </div>
+    <div class="prod-txt">
+      <span class="prod-num" aria-hidden="true">01</span>
+      <div class="lbl rv">Natural Skincare</div>
+      <h2 class="heading" id="herbal-soaps-h">Herbal Soaps</h2>
+      <p class="body-text rv">We offer a wide range of herbal soap varieties crafted using natural ingredients — rose, saffron, neem, jasmine, multani mitti, and more.</p>
+      <p class="prod-point rv"><span class="prod-point-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M8 9V6.5a4 4 0 0 1 8 0V9"/></svg></span>Rose, jasmine, neem, saffron &amp; multani mitti</p>
+        <ul class="prod-vars" aria-label="Soap varieties"><li>Rose</li><li>Jasmine</li><li>Neem</li><li>Saffron</li><li>Multani Mitti</li></ul>
+      <div class="prod-ctas rv">
+        <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap%21%20I%27d%20like%20to%20enquire%20about%20Herbal%20Soaps." target="_blank" class="btn btn-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg> Enquire on WhatsApp</a>
+        <a href="tel:+918118836753" class="btn btn-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prod flip" id="liquid-detergent" aria-labelledby="liquid-detergent-h">
+  <div class="prod-in">
+    <div class="prod-vis rv">
+        <div class="prod-media">
+          <img loading="lazy" decoding="async" width="853" height="1280" src="image13.jpg" alt="DEV Herbal Liquid Detergent bottle">
+        </div>
+    </div>
+    <div class="prod-txt">
+      <span class="prod-num" aria-hidden="true">02</span>
+      <div class="lbl rv">Daily Cleansing</div>
+      <h2 class="heading" id="liquid-detergent-h">Liquid Detergent</h2>
+      <p class="body-text rv">A natural, effective detergent that cleans deeply while staying soft on your hands.</p>
+      <p class="prod-point rv"><span class="prod-point-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 3h6v3l2 3v10.5A1.5 1.5 0 0 1 15.5 21h-7A1.5 1.5 0 0 1 7 19.5V9l2-3V3Z"/><path d="M7 13h10"/></svg></span>Herbal formula for laundry &amp; utensils</p>
+      <div class="prod-ctas rv">
+        <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap%21%20I%27d%20like%20to%20enquire%20about%20Liquid%20Detergent." target="_blank" class="btn btn-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg> Enquire on WhatsApp</a>
+        <a href="tel:+918118836753" class="btn btn-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prod" id="dish-wash" aria-labelledby="dish-wash-h">
+  <div class="prod-in">
+    <div class="prod-vis rv">
+        <div class="prod-media land">
+          <img loading="lazy" decoding="async" width="1536" height="1024" src="image7.jpg" alt="DEV Herbal Dish Wash bottles">
+        </div>
+    </div>
+    <div class="prod-txt">
+      <span class="prod-num" aria-hidden="true">03</span>
+      <div class="lbl rv">Kitchen &amp; Home</div>
+      <h2 class="heading" id="dish-wash-h">Dish Wash</h2>
+      <p class="body-text rv">A natural dish wash formula that cuts through grease effortlessly while being safe for your family and gentle on the environment.</p>
+      <p class="prod-point rv"><span class="prod-point-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3s5 5.5 5 9.5a5 5 0 0 1-10 0C7 8.5 12 3 12 3Z"/></svg></span>Cuts grease, gentle on hands</p>
+      <div class="prod-ctas rv">
+        <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap%21%20I%27d%20like%20to%20enquire%20about%20Dish%20Wash." target="_blank" class="btn btn-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg> Enquire on WhatsApp</a>
+        <a href="tel:+918118836753" class="btn btn-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prod flip" id="hand-wash" aria-labelledby="hand-wash-h">
+  <div class="prod-in">
+    <div class="prod-vis rv">
+        <div class="prod-media prod-media-ic">
+          <span class="pm-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v6M8 8c0 2-2 3-2 6a6 6 0 0 0 12 0c0-3-2-4-2-6"/><path d="M4.5 20.5h15"/></svg></span>
+          <span class="pm-cap">Daily Care</span>
+        </div>
+    </div>
+    <div class="prod-txt">
+      <span class="prod-num" aria-hidden="true">04</span>
+      <div class="lbl rv">Daily Care</div>
+      <h2 class="heading" id="hand-wash-h">Hand Wash</h2>
+      <p class="body-text rv">An everyday herbal hand wash, made with the same natural ingredients as the rest of the DEV range.</p>
+      <p class="prod-point rv"><span class="prod-point-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v6M8 8c0 2-2 3-2 6a6 6 0 0 0 12 0c0-3-2-4-2-6"/><path d="M4.5 20.5h15"/></svg></span>Everyday herbal hand cleanser</p>
+      <div class="prod-ctas rv">
+        <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap%21%20I%27d%20like%20to%20enquire%20about%20Hand%20Wash." target="_blank" class="btn btn-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg> Enquire on WhatsApp</a>
+        <a href="tel:+918118836753" class="btn btn-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prod" id="kasturi-dhoop" aria-labelledby="kasturi-dhoop-h">
+  <div class="prod-in">
+    <div class="prod-vis rv">
+        <div class="prod-media land">
+          <img loading="lazy" decoding="async" width="1080" height="721" src="image11.jpg" alt="DEV Kasturi Dhoop incense sticks">
+        </div>
+    </div>
+    <div class="prod-txt">
+      <span class="prod-num" aria-hidden="true">05</span>
+      <div class="lbl rv">Sacred · Calm</div>
+      <h2 class="heading" id="kasturi-dhoop-h">Kasturi Dhoop Sticks</h2>
+      <p class="body-text rv">Pure, traditional incense sticks. Please contact us to explore fragrance options.</p>
+      <p class="prod-point rv"><span class="prod-point-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21V9M12 9c-3 0-3-3-6-3M12 9c0-3.5 2-4.5 2-7"/></svg></span>Pure incense sticks, traditional fragrance</p>
+      <div class="prod-ctas rv">
+        <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap%21%20I%27d%20like%20to%20enquire%20about%20Kasturi%20Dhoop%20Sticks." target="_blank" class="btn btn-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg> Enquire on WhatsApp</a>
+        <a href="tel:+918118836753" class="btn btn-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pnote"><p class="rv">All products are made in small batches in Jaipur. Delivery within Jaipur only.</p></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner solo">
+    <div class="ct-txt">
+      <div class="lbl rv">Get in Touch</div>
+      <h2 class="heading rv" style="margin-top:.5rem;color:#fff">Order or<br>Enquire Today</h2>
+      <p class="body-text rv" style="color:rgba(255,255,255,.65);margin-top:.8rem">For orders and inquiries, please contact us via WhatsApp or call directly. We'll respond personally and promptly. Delivery currently available within Jaipur.</p>
+      <div class="ct-cards rv">
+        <a href="tel:+918118836753" class="ct-card">
+          <div class="ct-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><span class="ct-num">8118836753</span><span class="ct-lbl">Call or WhatsApp · Primary</span></div>
+        </a>
+        <a href="tel:+918696560755" class="ct-card">
+          <div class="ct-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><span class="ct-num">8696560755</span><span class="ct-lbl">Call or WhatsApp · Alternate</span></div>
+        </a>
+      </div>
+      <div class="ct-ctas rv">
+        <a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap!%20I%27d%20like%20to%20place%20an%20order." target="_blank" class="btn btn-wa" style="justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg>&nbsp;Chat on WhatsApp</a>
+        <a href="tel:+918118836753" class="btn btn-ghost" style="justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>&nbsp;Call Now</a>
+      </div>
+      <p class="ct-note rv"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="vertical-align:-2px;margin-right:.3rem"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Jaipur, Rajasthan &nbsp;·&nbsp; Delivery within Jaipur only</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fw">
+    <div class="ft">
+      <div>
+        <div class="f-logo-row">
+          <img loading="lazy" decoding="async" width="836" height="672" src="logo_of_devhs.jpg" alt="DEV Herbal Soap" class="f-logo-img" onerror="this.style.display='none'">
+          <div class="f-name">DEV Herbal Soap<sub>Jaipur · Rajasthan</sub></div>
+        </div>
+        <p class="f-desc">A home-based handmade herbal products brand from Jaipur — soaps, dhoop, liquid detergent, dish wash and hand wash, crafted with pure ingredients and genuine care.</p>
+        <div class="f-contacts">
+          <a href="tel:+918118836753"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 8118836753</a>
+          <a href="tel:+918696560755"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 8696560755</a>
+          <a href="https://wa.me/918118836753" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg> WhatsApp Enquiry</a>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-h">Navigation</div>
+        <ul class="f-links">
+          <li><a href="products.html">Products</a></li>
+          <li><a href="index.html#about">Our Story</a></li>
+          <li><a href="index.html#showcase">Gallery</a></li>
+          <li><a href="index.html#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-h">Products</div>
+        <ul class="f-plist">
+          <li>Herbal Soaps</li>
+          <li>Rose · Jasmine · Neem</li>
+          <li>Saffron · Multani Mitti</li>
+          <li>Liquid Detergent</li>
+          <li>Dish Wash · Hand Wash</li>
+          <li>Kasturi Dhoop Sticks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fb">
+      <p class="f-copy">© 2026 DEV Herbal Soap · Jaipur, Rajasthan · All rights reserved</p>
+      <p class="f-close">Crafted by hand, powered by nature.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/918118836753?text=Hello%20DEV%20Herbal%20Soap!" class="float-wa" target="_blank" aria-label="Chat on WhatsApp">
+  <div class="wa-ring"></div>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.48 1.32 4.94L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.01c-.24.68-1.42 1.31-1.96 1.35-.5.05-1.12.07-1.81-.11-.42-.11-.95-.31-1.64-.61-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.64.49.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.13.07.71-.17 1.39z"/></svg>
+</a>
+
+<script type="module" src="js/soap3d.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/lenis.min.js"></script>
+<script src="js/products.js"></script>
+</body>
+</html>
