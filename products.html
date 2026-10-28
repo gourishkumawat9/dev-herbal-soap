@@ -34,10 +34,11 @@ html{scroll-padding-top:140px}
 .prod-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
 .prod.flip .prod-vis{order:2}
 .prod-vis{position:relative}
-.prod-media{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:4/5;box-shadow:var(--sh-lg);background:var(--navy-dark)}
+.prod-media{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:2/3;box-shadow:var(--sh-lg);background:var(--navy-dark)}
 .prod-media.land{aspect-ratio:3/2}
 .prod-media img{width:100%;height:100%;object-fit:cover}
-.prod-media-ic{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;background:radial-gradient(circle at 30% 20%,#33485c,var(--navy-dark) 70%)}
+.prod-vis.portrait{width:100%;max-width:440px;justify-self:center}
+.prod-media-ic{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;background:radial-gradient(circle at 30% 20%,#33485c,var(--navy-dark) 70%)}
 .pm-big{width:150px;height:150px;border-radius:50%;border:1px solid rgba(212,176,120,.35);display:flex;align-items:center;justify-content:center;color:var(--gold-lt)}
 .pm-big svg{width:64px;height:64px}
 .pm-cap{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-lt)}
@@ -130,9 +131,9 @@ html{scroll-padding-top:140px}
 <!-- PRODUCTS -->
 <section class="prod" id="herbal-soaps" aria-labelledby="herbal-soaps-h">
   <div class="prod-in">
-    <div class="prod-vis rv">
+    <div class="prod-vis portrait rv">
         <div class="prod-media">
-          <img loading="eager" decoding="async" width="1024" height="1536" src="2image.jpeg" alt="Stack of DEV Jasmine Soap bars with yellow flowers">
+          <img loading="eager" decoding="async" width="1024" height="1536" src="2image.jpeg" class="keep-text" alt="Stack of DEV Jasmine Soap bars with yellow flowers">
         </div>
           <div class="prod-badge"><span>13+</span>Varieties</div>
     </div>
@@ -153,9 +154,9 @@ html{scroll-padding-top:140px}
 
 <section class="prod flip" id="liquid-detergent" aria-labelledby="liquid-detergent-h">
   <div class="prod-in">
-    <div class="prod-vis rv">
+    <div class="prod-vis portrait rv">
         <div class="prod-media">
-          <img loading="lazy" decoding="async" width="853" height="1280" src="image13.jpg" alt="DEV Herbal Liquid Detergent bottle">
+          <img loading="lazy" decoding="async" width="853" height="1280" src="image13.jpg" class="keep-text" alt="DEV Herbal Liquid Detergent bottle">
         </div>
     </div>
     <div class="prod-txt">
@@ -176,7 +177,7 @@ html{scroll-padding-top:140px}
   <div class="prod-in">
     <div class="prod-vis rv">
         <div class="prod-media land">
-          <img loading="lazy" decoding="async" width="1536" height="1024" src="image7.jpg" alt="DEV Herbal Dish Wash bottles">
+          <img loading="lazy" decoding="async" width="1536" height="1024" src="image7.jpg" class="keep-text" alt="DEV Herbal Dish Wash bottles">
         </div>
     </div>
     <div class="prod-txt">
@@ -195,7 +196,7 @@ html{scroll-padding-top:140px}
 
 <section class="prod flip" id="hand-wash" aria-labelledby="hand-wash-h">
   <div class="prod-in">
-    <div class="prod-vis rv">
+    <div class="prod-vis portrait rv">
         <div class="prod-media prod-media-ic">
           <span class="pm-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v6M8 8c0 2-2 3-2 6a6 6 0 0 0 12 0c0-3-2-4-2-6"/><path d="M4.5 20.5h15"/></svg></span>
           <span class="pm-cap">Daily Care</span>
