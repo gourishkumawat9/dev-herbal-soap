@@ -154,15 +154,14 @@ html.lenis,html.lenis body{height:auto}
 .img-clip{clip-path:inset(var(--clip,0%) 0 0 0)}
 .sw>.swi{display:inline-block;will-change:transform}
 
-/* stage: the full product photo in a gold-lined frame */
-.hero-stage{position:absolute;inset:0;z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;padding:4vh 0 0 36%}
-.hero-frame{position:relative;margin:0;height:min(70vh,680px);aspect-ratio:2/3}
-@media(min-width:901px) and (max-width:1200px){.hero-stage{padding-left:46%}.hero-frame{height:min(62vh,600px)}}
-.hero-frame-in{position:absolute;inset:0;border-radius:20px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.25)}
-.hero-frame-in img{width:100%;height:100%;object-fit:cover}
-.hero-frame-line{position:absolute;inset:-14px;border:1px solid rgba(212,176,120,.45);border-radius:30px}
+/* stage: 3D model of the Rose Soap from image 1 (pre-rendered, stays still) */
+.hero-stage{position:absolute;inset:0;z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;padding:8vh 0 0 40%}
+.hero-model{position:relative;margin:0;width:min(38vw,620px)}
+@media(min-width:901px) and (max-width:1200px){.hero-stage{padding-left:46%}.hero-model{width:40vw}}
+.hero-model img{position:relative;z-index:1;width:100%;height:auto}
+.hero-model-shadow{position:absolute;left:6%;right:2%;bottom:-4%;height:26%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.6),rgba(0,0,0,.25) 45%,transparent 70%);filter:blur(12px)}
 
-.hero-stamp{position:absolute;right:-62px;top:60px;z-index:4;width:118px;height:118px}
+.hero-stamp{position:absolute;right:-20px;top:-110px;z-index:4;width:118px;height:118px}
 .hero-stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
 .hero-stamp text{font-family:'Jost',sans-serif;font-size:8.4px;letter-spacing:.18em;text-transform:uppercase;fill:rgba(245,240,232,.75)}
 .hero-stamp-i{position:absolute;inset:22px;border-radius:50%;background:rgba(184,151,90,.14);border:1px solid rgba(212,176,120,.35);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center;justify-content:center}
@@ -184,7 +183,7 @@ html.lenis,html.lenis body{height:auto}
 .pill-wrap{position:relative}
 .pill-btn{display:flex;align-items:center;gap:1.4rem;background:#fff;color:var(--text);border:none;border-radius:999px;padding:.45rem .5rem .45rem .7rem;font-family:'Jost',sans-serif;font-size:1rem;cursor:pointer;min-width:270px;justify-content:space-between;box-shadow:0 10px 40px rgba(0,0,0,.25);transition:transform .3s}
 .pill-btn:hover{transform:translateY(-2px)}
-.pill-soap img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 55%}
+.pill-soap img{width:46px;height:auto}
 .pill-chev{width:36px;height:36px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;transition:transform .4s}
 .pill-wrap.open .pill-chev{transform:rotate(180deg)}
 .pill-menu{position:absolute;left:0;right:0;bottom:calc(100% + .6rem);background:#fff;border-radius:22px;padding:.5rem;box-shadow:0 20px 60px rgba(0,0,0,.3);transform-origin:50% 100%;opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);transition:opacity .2s,transform .25s ease-in,visibility .2s}
@@ -394,10 +393,10 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
   .hero-copy{position:relative;left:auto;top:auto;max-width:none;padding:0 1.5rem}
   .hero-h1-main{font-size:clamp(3rem,13vw,5.6rem)}
   .hero-h1-brand{margin-top:.8rem}
-  .hero-stage{position:relative;inset:auto;padding:2.4rem 0}
-  .hero-frame{height:auto;width:min(70vw,340px)}
+  .hero-stage{position:relative;inset:auto;padding:5.5rem 0 3rem}
+  .hero-model{width:min(86vw,440px)}
   .hero-glow{left:50%;top:62%}
-  .hero-stamp{right:-34px;top:auto;bottom:22%;width:92px;height:92px}
+  .hero-stamp{right:-6px;top:-78px;width:92px;height:92px}
   .hero-stamp-i{inset:17px}
   .hero-stamp text{font-size:9px}
   .hero-bottom{position:relative;grid-template-columns:1fr;justify-items:center;gap:1.4rem;padding:0 1.5rem 1.8rem;text-align:center}
@@ -511,11 +510,9 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
   </div>
 
   <div class="hero-stage">
-    <figure class="hero-frame">
-      <span class="hero-frame-line" aria-hidden="true"></span>
-      <div class="hero-frame-in">
-        <img src="1image.jpeg" alt="DEV Rose Soap on a gold-rimmed tray with fresh roses and petals" width="853" height="1280" fetchpriority="high">
-      </div>
+    <figure class="hero-model">
+      <span class="hero-model-shadow" aria-hidden="true"></span>
+      <img src="soap-model.webp" alt="DEV Rose Soap — handmade herbal soap bar" width="1513" height="1015" fetchpriority="high">
       <div class="hero-stamp" aria-label="100% Natural Herbal">
         <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="stampPath" d="M60 60m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs><text><textPath href="#stampPath" textLength="312" lengthAdjust="spacing">100% Natural · Herbal · 100% Natural · Herbal ·</textPath></text></svg>
         <div class="hero-stamp-i">
@@ -540,7 +537,7 @@ footer{background:#1a2730;padding:5rem 2rem 2.5rem}
         <a href="#products"><span class="pm-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21V9M12 9c-3 0-3-3-6-3M12 9c0-3.5 2-4.5 2-7"/></svg></span><span>Kasturi Dhoop<small>Pure incense sticks, traditional fragrance</small></span></a>
       </div>
       <button class="pill-btn" id="pillBtn" aria-expanded="false" aria-controls="pillMenu">
-        <span class="pill-soap" aria-hidden="true"><img src="1image.jpeg" alt=""></span>
+        <span class="pill-soap" aria-hidden="true"><img src="soap-model.webp" alt=""></span>
         <span>Our Products</span>
         <span class="pill-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
       </button>
@@ -1020,9 +1017,8 @@ function initMotion() {
     .from(mainWords, {yPercent: 115, duration: 1.4, stagger: .09}, .1)
     .from(brandWords, {yPercent: 115, duration: 1.1, stagger: .07}, .55)
     .from(['.hero-eye', '.hero-tag'], {opacity: 0, y: 18, duration: 1}, .7)
-    .fromTo('.hero-frame-in', {clipPath: 'inset(100% 0% 0% 0% round 20px)'}, {clipPath: 'inset(0% 0% 0% 0% round 20px)', duration: 1.6, ease: 'expo.inOut', clearProps: 'clipPath'}, .2)
-    .from('.hero-frame-in img', {scale: 1.3, duration: 2.2, ease: 'expo.out'}, .5)
-    .from('.hero-frame-line', {opacity: 0, scale: .94, duration: 1.4, ease: 'power3.out'}, 1.1)
+    .from('.hero-model img', {y: 90, opacity: 0, duration: 1.8, ease: 'expo.out'}, .3)
+    .from('.hero-model-shadow', {opacity: 0, scaleX: .5, duration: 1.6, ease: 'power3.out'}, .6)
     .from('.hero-stamp', {scale: 0, rotation: -140, opacity: 0, duration: 1.4, ease: 'back.out(1.4)'}, 1.2)
     .from(['.hero-links a', '.hero-logo', '.hero-top-r'], {y: -22, opacity: 0, duration: 1, stagger: .06}, .7)
     .from(['.hero-bl', '.pill-wrap', '.hero-scroll'], {y: 30, opacity: 0, duration: 1, stagger: .1}, .9);
@@ -1055,11 +1051,10 @@ function initMotion() {
   });
   }
 
-  /* ── HERO SCROLL: photo drifts down slower than the page and eases in, copy lifts away ── */
+  /* ── HERO SCROLL: soap drifts down slower than the page, copy lifts away ── */
   gsap.timeline({scrollTrigger: {trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true}})
     .to('.hero-copy', {yPercent: -40, opacity: 0, ease: 'none'}, 0)
-    .to('.hero-frame', {y: () => innerHeight * (desk.matches ? .25 : .08), ease: 'none'}, 0)
-    .to('.hero-frame-in img', {scale: 1.12, ease: 'none'}, 0)
+    .to('.hero-model', {y: () => innerHeight * (desk.matches ? .25 : .08), ease: 'none'}, 0)
     .to('.hero-stamp', {y: -120, ease: 'none'}, 0)
     .to('.hero-bottom', {opacity: 0, y: 40, ease: 'none'}, 0);
 
