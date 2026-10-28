@@ -109,7 +109,7 @@ if (window.gsap && window.ScrollTrigger && !RM) {
     gsap.fromTo(media, {clipPath: 'inset(100% 0% 0% 0%)'}, {clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.out', clearProps: 'clipPath',
       scrollTrigger: {trigger: media, start: 'top 85%'}});
     const img = media.querySelector('img');
-    if (img) {
+    if (img && !img.classList.contains('keep-text')) {
       gsap.fromTo(img, {scale: 1.25}, {scale: 1.1, duration: 1.8, ease: 'expo.out', scrollTrigger: {trigger: media, start: 'top 85%'}});
       gsap.fromTo(img, {yPercent: -5}, {yPercent: 5, ease: 'none',
         scrollTrigger: {trigger: media, start: 'top bottom', end: 'bottom top', scrub: true}});

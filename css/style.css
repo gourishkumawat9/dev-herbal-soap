@@ -97,6 +97,9 @@ html.lenis,html.lenis body{height:auto}
 
 /* scroll-driven image reveal + parallax (vars set from JS) */
 .img-rv img{scale:var(--s,1.12);translate:0 var(--py,0)}
+/* photos with a printed tagline: never zoomed or shifted, anchored to the bottom so the line stays whole */
+img.keep-text{object-position:50% 100%}
+.sc-img:hover img.keep-text,.nat-img:hover img.keep-text{transform:none}
 .js-anim .mq-track{animation:none}
 
 /* ─── PRELOADER ─── */
@@ -307,7 +310,7 @@ html.lenis,html.lenis body{height:auto}
 .ct-ctas{display:flex;flex-direction:column;gap:.8rem}
 .ct-note{font-size:.75rem;color:rgba(255,255,255,.58);font-weight:300;margin-top:.8rem}
 .ct-vis{position:relative}
-.ct-frame{border-radius:2px;overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:4/5}
+.ct-frame{border-radius:2px;overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:3/2}
 .ct-frame img{width:100%;height:100%;object-fit:cover}
 .ct-logo-float{position:absolute;bottom:-1.5rem;left:-1.5rem;width:110px;height:110px;background:var(--navy-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-md);border:4px solid var(--navy-dark);overflow:hidden}
 .ct-logo-float img{width:100%;height:100%;object-fit:contain}
