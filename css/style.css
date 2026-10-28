@@ -152,6 +152,7 @@ html.lenis,html.lenis body{height:auto}
 .soap-canvas.grabbing{cursor:grabbing}
 .hero-model-in.is-3d .soap-canvas{opacity:1}
 .hero-model-in.is-3d img{opacity:0}
+.hero-model-in.no-fade img,.hero-model-in.no-fade .soap-canvas{transition:none}
 .hero-model-shadow{position:absolute;left:6%;right:2%;bottom:-4%;height:26%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.6),rgba(0,0,0,.25) 45%,transparent 70%);filter:blur(12px)}
 
 .hero-stamp{position:absolute;right:-20px;top:-110px;z-index:4;width:118px;height:118px}

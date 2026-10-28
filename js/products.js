@@ -96,7 +96,7 @@ if (window.gsap && window.ScrollTrigger && !RM) {
     .from('.chip', {opacity: 0, y: 12, duration: .8, stagger: .05}, .6)
     .from('.ph .hero-model-in', {y: 70, opacity: 0, duration: 1.6, ease: 'expo.out'}, .3);
   // spin the 3D soap in as soon as it is ready
-  window.devSoap ? window.devSoap.spin() : (window.__soapSpin = true);
+  window.devSoap ? window.devSoap.spin() : (window.__soapSpin = performance.now());
 
   // product rows: heading words rise, outline number slides in, photo wipes up with inner parallax
   document.querySelectorAll('.prod').forEach(row => {

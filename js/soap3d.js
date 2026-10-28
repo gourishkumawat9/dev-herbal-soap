@@ -76,55 +76,99 @@ async function init() {
   fit();
   new ResizeObserver(fit).observe(canvas);
 
-  /* ── motion: resting angle + slow turn + scroll turn + drag + intro spin ── */
-  const REST = THREE.MathUtils.degToRad(-16);
-  const SPEED = (Math.PI * 2) / 18;         // one turn every 18s
-  let turn = 0, speed = 0, drag = null, fling = 0, spinFrom = 0, spinStart = -1;
+  /* ── motion: the bar never spins round — it sways, leans toward the pointer,
+        tilts with scroll and springs back to face the front after a drag ── */
+  const D = THREE.MathUtils.degToRad;
+  bar.rotation.order = 'YXZ';
+  const REST = D(-16);
+  const st = {y: REST, vy: 0, x: 0, vx: 0};
+  const pointer = {x: 0, y: 0};
+  let drag = null, dragY = 0, dragX = 0, introStart = -1;
 
   window.devSoap = {
-    spin() { spinFrom = -Math.PI * 2; spinStart = performance.now(); }
+    // reveal: the bar turns in from the side and settles facing front
+    spin() {
+      introStart = performance.now();
+      st.y = REST - D(80); st.x = D(22); st.vy = st.vx = 0;
+      // the soap starts side-on, so drop the still image at once instead of cross-fading
+      host.classList.add('no-fade');
+      if (shown) host.classList.add('is-3d');
+    }
   };
 
+  if (matchMedia('(pointer: fine)').matches) {
+    addEventListener('pointermove', e => {
+      pointer.x = e.clientX / innerWidth * 2 - 1;
+      pointer.y = e.clientY / innerHeight * 2 - 1;
+    }, {passive: true});
+  }
+
   canvas.addEventListener('pointerdown', e => {
-    drag = { x: e.clientX, t: performance.now(), v: 0 };
+    drag = {x: e.clientX, y: e.clientY};
     canvas.setPointerCapture(e.pointerId);
     canvas.classList.add('grabbing');
   });
   canvas.addEventListener('pointermove', e => {
     if (!drag) return;
-    const now = performance.now(), dx = e.clientX - drag.x;
-    turn += dx * .012;
-    drag.v = dx * .012 / Math.max(now - drag.t, 1) * 1000;
-    drag.x = e.clientX; drag.t = now;
+    dragY = THREE.MathUtils.clamp(dragY + (e.clientX - drag.x) * .01, -D(85), D(85));
+    dragX = THREE.MathUtils.clamp(dragX + (e.clientY - drag.y) * .006, -D(25), D(25));
+    drag.x = e.clientX; drag.y = e.clientY;
   });
-  const release = () => { if (drag) { fling = drag.v; drag = null; canvas.classList.remove('grabbing'); } };
+  const release = () => {
+    if (!drag) return;
+    drag = null; dragY = 0; dragX = 0;   // the spring carries it back with a soft settle
+    canvas.classList.remove('grabbing');
+  };
   canvas.addEventListener('pointerup', release);
   canvas.addEventListener('pointercancel', release);
+
+  // slightly under-damped spring: smooth follow with a gentle settle
+  const spring = (pos, vel, target, k, dt) => {
+    const c = 2 * Math.sqrt(k) * .72;
+    for (let i = 0; i < 2; i++) {
+      vel += (k * (target - pos) - c * vel) * dt / 2;
+      pos += vel * dt / 2;
+    }
+    return [pos, vel];
+  };
 
   let visible = true;
   new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible) loop(); }).observe(hero);
 
   let last = performance.now(), running = false, shown = false;
   function frame(now) {
+    if (shown && !host.classList.contains('is-3d')) host.classList.add('is-3d');
     const dt = Math.min((now - last) / 1000, .05); last = now;
-    if (!drag) {
-      speed += (SPEED - speed) * Math.min(dt * .8, 1);   // ease into the idle turn
-      fling *= Math.pow(.04, dt);                         // drag momentum fades out
-      turn += (speed + fling) * dt;
-    }
-    let intro = 0;
-    if (spinStart >= 0) {
-      const p = Math.min((now - spinStart) / 2200, 1);
-      intro = spinFrom * Math.pow(1 - p, 3);
-      if (p >= 1) spinStart = -1;
-    }
+    const t = now / 1000;
     const scroll = Math.min(Math.max(scrollY / hero.offsetHeight, 0), 1);
-    bar.rotation.y = REST + turn + intro + scroll * Math.PI;
-    renderer.render(scene, cam);
-    if (!shown) {
-      shown = true; host.classList.add('is-3d');
-      if (window.__soapSpin) window.devSoap.spin();
+
+    let introY = 0, introX = 0;
+    if (introStart >= 0) {
+      const p = Math.min((now - introStart) / 2400, 1), left = Math.pow(1 - p, 4);
+      introY = -D(80) * left; introX = D(22) * left;
+      if (p >= 1) introStart = -1;
     }
+
+    const targetY = REST + D(9) * Math.sin(t * .55) + pointer.x * D(18) + scroll * D(55) + dragY + introY;
+    const targetX = D(3) * Math.sin(t * .8 + 1) + pointer.y * D(7) + scroll * D(16) + dragX + introX;
+    const k = drag ? 220 : introStart >= 0 ? 160 : 36;
+    [st.y, st.vy] = spring(st.y, st.vy, targetY, k, dt);
+    [st.x, st.vx] = spring(st.x, st.vx, targetX, k, dt);
+
+    if (!shown) {
+      shown = true;
+      // reveal asked for just now: swap straight to 3D (no cross-fade, so no double image)
+      if (window.__soapSpin && now - window.__soapSpin < 900) {
+        host.classList.add('no-fade');
+        window.devSoap.spin();
+        return frame(now);
+      }
+      host.classList.add('is-3d');
+    }
+    bar.rotation.y = st.y;
+    bar.rotation.x = st.x;
+    bar.position.y = .16 * Math.sin(t * .9);   // soft float
+    renderer.render(scene, cam);
   }
   function loop() {
     if (running) return;
