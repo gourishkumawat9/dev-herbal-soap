@@ -34,14 +34,11 @@ html{scroll-padding-top:140px}
 .prod-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
 .prod.flip .prod-vis{order:2}
 .prod-vis{position:relative}
-.prod-media{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:2/3;box-shadow:var(--sh-lg);background:var(--navy-dark)}
-.prod-media.land{aspect-ratio:3/2}
-.prod-media img{width:100%;height:100%;object-fit:cover}
-.prod-vis.portrait{width:100%;max-width:440px;justify-self:center}
-.prod-media-ic{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;background:radial-gradient(circle at 30% 20%,#33485c,var(--navy-dark) 70%)}
-.pm-big{width:150px;height:150px;border-radius:50%;border:1px solid rgba(212,176,120,.35);display:flex;align-items:center;justify-content:center;color:var(--gold-lt)}
-.pm-big svg{width:64px;height:64px}
-.pm-cap{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-lt)}
+.prod-media{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:4/5;box-shadow:var(--sh-md);padding:9%}
+.prod-media img.model{height:100%;width:100%}
+.prod-media.sq{aspect-ratio:1;padding:4%}
+.prod.flip .prod-media{box-shadow:var(--sh-sm)}
+.prod-vis{width:100%;max-width:520px;justify-self:center}
 .prod-badge{position:absolute;right:-1.6rem;bottom:2rem;background:var(--navy-dark);color:rgba(255,255,255,.7);padding:1.2rem 1.4rem;border-radius:2px;box-shadow:var(--sh-md);text-align:center;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase}
 .prod-badge span{display:block;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--gold-lt);letter-spacing:0;line-height:1}
 .prod-num{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(4rem,8vw,6.5rem);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--gold);margin-bottom:1rem}
@@ -131,9 +128,9 @@ html{scroll-padding-top:140px}
 <!-- PRODUCTS -->
 <section class="prod" id="herbal-soaps" aria-labelledby="herbal-soaps-h">
   <div class="prod-in">
-    <div class="prod-vis portrait rv">
-        <div class="prod-media">
-          <img loading="eager" decoding="async" width="1024" height="1536" src="2image.jpeg" class="keep-text" alt="Stack of DEV Jasmine Soap bars with yellow flowers">
+    <div class="prod-vis rv">
+        <div class="prod-media panel sq">
+          <img loading="eager" decoding="async" width="1200" height="655" src="models/soaps.webp" class="model" alt="DEV Rose, Jasmine, Saffron and Multani Mitti soap bars">
         </div>
           <div class="prod-badge"><span>13+</span>Varieties</div>
     </div>
@@ -154,9 +151,9 @@ html{scroll-padding-top:140px}
 
 <section class="prod flip" id="liquid-detergent" aria-labelledby="liquid-detergent-h">
   <div class="prod-in">
-    <div class="prod-vis portrait rv">
-        <div class="prod-media">
-          <img loading="lazy" decoding="async" width="853" height="1280" src="image13.jpg" class="keep-text" alt="DEV Herbal Liquid Detergent bottle">
+    <div class="prod-vis rv">
+        <div class="prod-media panel">
+          <img loading="lazy" decoding="async" width="551" height="1200" src="models/detergent.webp" class="model" alt="DEV Herbal Liquid Detergent bottle">
         </div>
     </div>
     <div class="prod-txt">
@@ -176,8 +173,8 @@ html{scroll-padding-top:140px}
 <section class="prod" id="dish-wash" aria-labelledby="dish-wash-h">
   <div class="prod-in">
     <div class="prod-vis rv">
-        <div class="prod-media land">
-          <img loading="lazy" decoding="async" width="1536" height="1024" src="image7.jpg" class="keep-text" alt="DEV Herbal Dish Wash bottles">
+        <div class="prod-media panel panel-warm">
+          <img loading="lazy" decoding="async" width="632" height="1200" src="models/dishwash.webp" class="model" alt="DEV Dish Wash bottle">
         </div>
     </div>
     <div class="prod-txt">
@@ -196,10 +193,9 @@ html{scroll-padding-top:140px}
 
 <section class="prod flip" id="hand-wash" aria-labelledby="hand-wash-h">
   <div class="prod-in">
-    <div class="prod-vis portrait rv">
-        <div class="prod-media prod-media-ic">
-          <span class="pm-big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v6M8 8c0 2-2 3-2 6a6 6 0 0 0 12 0c0-3-2-4-2-6"/><path d="M4.5 20.5h15"/></svg></span>
-          <span class="pm-cap">Daily Care</span>
+    <div class="prod-vis rv">
+        <div class="prod-media panel">
+          <img loading="lazy" decoding="async" width="733" height="1200" src="models/handwash.webp" class="model" alt="DEV Herbal Hand Wash pump bottle">
         </div>
     </div>
     <div class="prod-txt">
@@ -219,8 +215,8 @@ html{scroll-padding-top:140px}
 <section class="prod" id="kasturi-dhoop" aria-labelledby="kasturi-dhoop-h">
   <div class="prod-in">
     <div class="prod-vis rv">
-        <div class="prod-media land">
-          <img loading="lazy" decoding="async" width="1080" height="721" src="image11.jpg" class="keep-text" alt="DEV Kasturi Dhoop incense sticks">
+        <div class="prod-media panel panel-warm sq">
+          <img loading="lazy" decoding="async" width="1200" height="583" src="models/dhoop.webp" class="model" alt="DEV Kasturi Dhoop sticks in their box">
         </div>
     </div>
     <div class="prod-txt">
