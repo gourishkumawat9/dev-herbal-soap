@@ -588,12 +588,6 @@ function initMotion() {
     .fromTo('.about-main', {clipPath: 'inset(100% 0 0 0)'}, {clipPath: 'inset(0% 0 0 0)', duration: 1.6, ease: 'expo.out', clearProps: 'clipPath'});
   gsap.to('.about-badge', {yPercent: -70, ease: 'none', scrollTrigger: {trigger: about, start: 'top bottom', end: 'bottom top', scrub: true}});
 
-  // gallery columns drift at different speeds on wide screens
-  gsap.matchMedia().add('(min-width: 901px)', () => {
-    gsap.fromTo('.sc-col:nth-child(2)', {yPercent: 4}, {yPercent: -4, ease: 'none',
-      scrollTrigger: {trigger: '#showcase', start: 'top bottom', end: 'bottom top', scrub: true}});
-  });
-
   /* ── NUMBERS COUNT UP ── */
   document.querySelectorAll('.cs-num, .ab-num').forEach(el => {
     const m = el.textContent.match(/^(\d+)(.*)$/);
