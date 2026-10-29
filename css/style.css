@@ -293,7 +293,7 @@ img.keep-text{object-position:50% 100%}
 .nat-copy .heading{font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:1rem}
 .nat-copy .rule{margin:1.2rem 0}
 .nat-copy .body-text{margin-bottom:.8rem}
-.nat-img{overflow:hidden;aspect-ratio:843/1280}
+.nat-img{overflow:hidden;aspect-ratio:843/1263;background:#eadfc6}
 .nat-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;display:block}
 .nat-img:hover img{transform:scale(1.04)}
 
